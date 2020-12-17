@@ -1,0 +1,47 @@
+{
+  "name": "malayalajalakam",
+  "productName": "Malayala Jaalakam",
+  "version": "2.0.1",
+  "description": "Unicode malayalam typing tool",
+  "main": "index.js",
+  "homepage": "www.malayalam-addon.blogspot.com",
+  "scripts": {
+    "build": "electron-packager . MalayalaJaalakam",
+    "start": "electron index.js",
+    "dist": "build",
+    "make-cert": "electron-builder create-self-signed-cert -p ameenvga"
+  },
+  "author": "ameen vengara <ameenvengara@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "asar": "^0.14.0",
+    "electron": "^1.8.4",
+    "electron-builder": "^20.13.3"
+  },
+  "build": {
+    "appId": "com.blogspot.malayalam-addon",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": "dmg"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "certificateFile": "private/ameenvga.pfx",
+      "verifyUpdateCodeSignature": false,
+      "publisherName": "ameenvga"
+    },
+    "linux": {
+      "target": "deb",
+      "icon": "assets/icons/png/"
+    }
+  }
+}

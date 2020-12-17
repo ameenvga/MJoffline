@@ -1,0 +1,1016 @@
+    <html>
+    <head>
+    <title>Malayala jaalakam Help</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<style>
+    @font-face {
+    font-family: notoSans;
+    src: url(fonts/notosans.ttf);
+    }
+    @font-face {
+    font-family: notoArabic;
+    src: url(fonts/notoArabic.ttf);
+    }
+    @font-face {
+    font-family: ubuntu;
+    src: url(fonts/Ubuntu-R.ttf);
+    }
+    :root{
+        --dark-color: #333;
+        --button-color: #888;
+        --button-font: #fff;
+        --disabled-color: rgb(146, 146, 146);
+        --active-color: dodgerblue;
+        --keyboard-color: #f7f7f7;
+        --desc-color: rgb(219, 251, 181);
+        
+    }
+    body{
+
+        margin: 0;
+        font-family: notoSans, ubuntu, notoArabic;
+        overflow: scroll;
+    }
+    h4{
+        text-align: center;
+        padding: 0px;
+        margin: 0px;
+        color: var(--active-color);
+        font-weight: normal;
+    }
+    h2{
+        color: var(--active-color);
+        font-weight: normal;
+    }
+    #appIcon{
+        -webkit-app-region: drag;
+        position: fixed;
+        left: 1px;
+        top: 1px;
+        width: 50px;
+        height: 50px;
+        z-index: 100;
+    }
+    #dragbar{
+        -webkit-app-region: drag;
+        width: 100vw;
+        position: fixed;
+        height: 50px;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--dark-color);
+    }
+    #title-bar-btns{
+        -webkit-app-region: no-drag;
+        right: 0;
+        display: flex;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        color: white;
+    }
+    #title-bar-btns>div{
+        width: 30px;
+        user-select: none;
+        height: 40px;
+        cursor: default;
+        padding: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        font-family: sans-serif;   
+    }
+    #ThreeButtons{
+        display: flex;
+        
+    }
+    #ThreeButtons>button{
+        height: 47px;
+        line-height: 19px;
+        width: 33.33%;
+        padding-left: 15px;
+        color: var(--button-font);
+        outline: none;
+    }
+    .activeKeyboard{
+        background-color: var(--active-color);
+    }
+    .disabledKeyboard{
+        background-color: var(--disabled-color);
+        color: #333;
+    }
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .flex-container > div {
+      background-color: #ddd;
+      padding: 5px;
+      width: 100px;
+      margin: 5px;
+      color: black;
+      text-align: center;
+      font-size: 22px;
+      border-radius: 5px;
+    }
+    .letter{
+        margin: 0px;
+        color: #1c3dad;
+        font-size: 18px;
+    }
+    .keyboardSection{
+        background-color: var(--keyboard-color);
+        padding-top: 15px;
+        border-radius:  0 0 10px 10px;
+        padding: 20px;
+        text-align: left;
+    }
+    .desc{
+        font-size: 20px;
+    }
+    .secDesc{
+        font-size: 18px;
+    }
+    .examples{
+        font-size: 25px;
+        color: #222421;
+    }
+    .hightlight{
+        color: #000000;
+        background: #ddd;
+        padding: 5px 7px 0px 12px;
+        border-radius: 6px;
+        font-size: 18px;
+        border: 1px solid rgb(144, 143, 143);
+        box-shadow: 0px 1px 0px 1px #949493;
+    }
+    ::-webkit-scrollbar
+    {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-thumb
+    {
+        border-radius: 5px;
+        box-shadow: inset 0 0 0px rgba(0,0,0,.3);
+        background-color: dodgerblue;
+    }
+    .ourlinks{
+            text-align: center;
+            color: #555;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+    }
+    #wrapper{
+        width: 80%;
+        margin: 10%;
+    }
+    #InsKeyboard,#ASCKeyboard, #ArabicPhoKeyboard, #Arabic101Keyboard{
+        display: none
+    }
+    #Pho, #Ins, #ASC, #ArabicPho, #Arabic101{
+        border:none;
+        font-size: 16px;
+    }
+    #helpDocText{
+            padding: 19px;
+    border-radius: 10px;
+        background: var(--desc-color)
+    }
+    #shortCutArea>p{
+        margin-top: 25px;
+    }
+    .TextHightlight{
+        color: blue;
+    }
+</style>
+        </head>
+        
+        <body>
+
+             <div id="wrapper">
+                <h4>Malayala Jaalakam version 2.0.0</h4>
+
+            <h1 style="text-align: center;">സഹായ ജാലകം</h1>
+                 <span style="color: red">മലയാളം ടൈപ്പ് ചെയ്യുമ്പോള്‍ <span class="hightlight">CapsLock</span> ON ആണോ OFF ആണോ എന്ന് ശ്രദ്ധിക്കുക. രണ്ടും വ്യത്യസ്തമായ ഇന്‍പുട്ടുകളാണ് നല്‍കുക. മാക് സിസ്റ്റം ഉപയോഗിക്കുന്നവര്‍ ഷോട്ട്കട്ടുകള്‍ കാണാന്‍ Available shortcuts സെക്ഷന്‍ കാണുക (താഴെ)</span>   
+            <br>
+            <br>
+            <div id="helpDocText">
+                 മലയാളം യൂനികോഡില്‍ ടൈപ്പ് ചെയ്യാനുള്ള ഒരു ടൂള്‍ ആണ് മലയാള ജാലകം‌.‌ വ്യത്യസ്ത കീബോര്‍ഡുകള്‍ ഉപയോഗിച്ച് ടൈപ്പ് ചെയ്താലും നിങ്ങള്‍ക്ക് ലഭിക്കുന്നത് യൂനികോഡ് ഫോര്‍മാറ്റിലുള്ള മലയാളമാണ്. ഇന്റര്‍നെറ്റ് ഉപയോക്താക്കള്‍ക്ക് ഈ ടെക്സ്റ്റ് നേരിട്ടു തന്നെ ഫെയ്സ്ബുക്ക് പോലെയുള്ള സമൂഹ മാധ്യമങ്ങളില്‍ 
+പേസ്റ്റ്‌ ചെയ്ത്‌ ഉപയോഗിക്കാവുന്നതാണ്. 
+                <br>
+            <br>
+
+                മലയാളത്തിനു‌ പുറമേ‌ ഇംഗ്ലീഷിലും‌ അറബിയിലും‌ നിങ്ങള്‍ക്ക്‌ ടെക്സ്റ്റ്‌ എന്റര്‍‌ ചെയ്യാവുന്നതാണ്‌. ഇംഗ്ലീഷ്‌, മലയാളം‌‌, അറബി‌ ഭാഷകള്‍‌ ‌യഥാക്രമം‌ <span class="hightlight">F1</span>, <span class="hightlight">F2</span>, <span class="hightlight">F3</span> ( മാക് കീബോര്‍ഡില്‍‌ Command k‌ey + 1, Command ‌key + 2, Command key + 3 എന്നിങ്ങനെ‌ ) എന്നീ‌ ഷോര്‍ട്ട്‌കട്ടുകള്‍‌ ഉപയോഗിച്ച്‌ സെലക്ട്‌ ചെയ്യാവുന്നതാണ്‌. അല്ലെങ്കില്‍‌ മുകളിലെ‌ ബാറിലെ‌ മൂന്ന്‌ ബട്ടണുകളില്‍‌ ക്ലിക്ക്‌ ചെയ്തും‌‌ ഇഷ്ടമുള്ള‌ ഭാഷ‌ സെലക്ട്‌ ചെയ്യാവുന്നതാണ്‌.
+<br>
+            <br>
+മലയാള ഭാഷയില്‍ ടൈപ്പ് ചെയ്യാന്‍ മൂന്ന് കീബോര്‍ഡുകള്‍ ലഭ്യമാണ്. ടോപ്ബാറില്‍ കാണുന്ന ആദ്യത്തെ ഒപ്ഷനില്‍ ക്ലിക്ക് ചെയ്താല്‍ വ്യത്യസ്ത കീബോര്‍ഡുകള്‍ സെലക്ട് ചെയ്യാന്‍ കഴിയും. അവയുടെ കീമാപ്പ് കാണാന്‍ സൈഡ് ബാറിലുള്ള കീബോര്‍ഡ് ഐക്കണില്‍ ക്ലിക്ക് ചെയ്താല്‍ മതി. കീമാപ്പ് താഴെ പ്രത്യക്ഷപ്പെടും.
+<br>
+            <br>
+അറബി ഭാഷയില്‍ ടൈപ്പ് ചെയ്യാന്‍ രണ്ട് തരം കീബോര്‍ഡുകള്‍ ലഭ്യമാണ്. അവ ലഭിക്കാന്‍ ആദ്യം അറബി ഭാഷ സെലക്ട് ചെയ്ത് കീബോര്‍ഡ് മെനുവില്‍ ക്ലിക്ക് ചെയ്താല്‍ മതി. അവയുടെയും കീമാപ്പ് സൈഡ്ബാറിലെ കീബോര്‍ഡ് ബട്ടണില്‍ ക്ലിക്ക് ചെയ്ത് കാണാം.
+  <br>
+            <br>
+അറബി ഭാഷ, വലതു ഭാഗത്ത് നിന്നും ഇടത് ഭാഗത്തേക്ക് എഴുതുന്ന ഭാഷയായതിനാല്‍ ടൈപ്പ് ചെയ്യുമ്പോള്‍, ടെക്സ്റ്റ് ഏരിയയിലെ ടെക്‌സ്റ്റ് അലൈന്‍‌മെന്റ് ക്രമം തെറ്റി കാണപ്പെടും. എങ്കിലും തിരികെ മലയാളത്തിലേക്കോ ഇംഗ്ലീഷിലേക്കോ ടൈപ്പിങ്ങ് മാറുമ്പോള്‍ അലൈന്‍‌മെന്റ് ശരിയായി വരുന്നത് കാണാം.
+  <br>
+            <br>
+അറബിയില്‍ മാത്രം ടൈപ്പ് ചെയ്യുന്നവര്‍ക്ക് മുകളിലെ Alignment menu വില്‍ നിന്ന് Right Alignment സെലക്ട് ചെയ്ത് ടൈ‌പ്പ് ചെയ്യുന്നതാണ്‌ ഏറ്റവും‌ നല്ലത്‌.
+
+
+
+                <br>
+            <br>
+ടെക്സ്റ്റ്‌ അലൈന്മെന്റ്‌ ഓപ്ഷനുകള്‍‌ ഉപയോഗപ്പെടുത്തി‌ ടെക്സ്റ്റിനെ‌ ഇടത്‌ ഭാഗത്തോ‌ വലതു‌ ഭാഗത്തോ‌ മധ്യഭാഗത്തോ‌ ഒക്കെയായി‌ അറേഞ്ച്‌ ചെയ്യാവുന്നതാണ്‌.
+                <br>
+            <br>
+
+                ടോപ് ബാറിലെ പ്ലസ് മൈനസ് ബട്ടണുകളില്‍ ക്ലിക്ക് ചെയ്ത് ഫോണ്ട് സൈസുകള്‍ കൂട്ടുകയോ കുറക്കുകയോ ചെയ്യാം. <span class="hightlight">Ctrl</span> <span class="hightlight">+</span> , <span class="hightlight">Ctrl</span> <span class="hightlight">-</span> ഷോര്‍ട്ട്കട്ടുകളും ഉപയോഗിച്ച് ഇതേ ഓപ്പറേഷന്‍ നിര്‍വ്വഹിക്കാം.
+
+                <br>
+            <br>
+
+ടെക്സ്റ്റ്‌ കോപ്പി‌ ചെയ്യാനുള്ള‌ ഒപ്ഷന്‍‌ ഉപയോഗിച്ച്‌ മുഴുവന്‍‌ ടെക്സ്റ്റും‌ ഒറ്റ‌ ക്ലിക്കില്‍‌ കോപ്പി‌ ചെയ്യാന്‍‌ കഴിയും‌‌. ഇനി‌ സെലക്ട്‌ ചെയ്ത‌ ശേഷമാണെങ്കില്‍‌ സെലക്ട്‌ ചെയ്ത‌ ഭാഗം‌ മാത്രമാണ്‌ ക്ലിപ്പ്‌ ബോര്‍ഡില്‍‌ കോപ്പി‌ ആവുക‌.‌ 
+                <br>
+            <br>
+
+U‌ndo Red‌o ബട്ടണുകള്‍‌ ഉപയോഗിച്ച്‌ നിങ്ങളുടെ‌ ഓപ്പറേഷനുകളില്‍‌ മുന്നിലേക്കും‌ പിന്നിലേക്കും‌ പോകാവുന്നതാണ്‌.
+                <br>
+            <br>
+
+FML, ML-KV ഫോര്‍മാറ്റുകളിലേക്ക് യൂനികോഡ്‌ ടെക്സ്റ്റ്‌ കണ്‍വെര്‍ട്ട് ചെയ്യാനുള്ള ഒപ്ഷന്‍ Convert to എന്ന‌ മെനുവില്‍‌ ലഭ്യമാണ്‌. നിങ്ങളുടെ‌ ടെക്സ്റ്റില്‍‌ ഇംഗ്ലീഷ്‌ വാക്കുകളുണ്ടെങ്കില്‍‌ അത്‌ പ്രത്യേകമായി‌ തന്നെ‌ കണ്‍വേര്‍ട്ടഡ്‌ ബോക്സില്‍‌ കാണിക്കും‌. ഫോട്ടോഷോപ്പ്‌ പോലെ‌യുള്ള‌ മറ്റു‌ സോഫ്റ്റ്‌വെയറുകളിലേക്ക്‌ പേസ്റ്റ്‌ ചെയ്യുമ്പോള്‍‌ ഇംഗ്ലീഷ്‌ വാക്കുകളെ‌ പ്രത്യേകമായി‌ ശ്രദ്ധിക്കാ‌നാണ്‌ ഈ‌ സൗകര്യം‌.<br>
+ടെക്സ്റ്റുകള്‍ FML, MLKV ഫോര്‍മാറ്റുകളിലേക്ക് മാറ്റി ക്ലിപ്പ്ബോര്‍ഡിലാക്കാന്‍ 
+Copy to FML ( <span class="hightlight">Ctrl</span> <span class="hightlight">F</span> ,  Copy to MLKV <span class="hightlight">Ctrl</span> <span class="hightlight">M</span> എന്നീ ഒപ്ഷനുകള്‍ ഉപയോഗിക്കാം.
+                <br>
+            <br>
+
+സേവ്‌ ചെയ്യാതെ‌ ആപ്ലിക്കേഷന്‍‌ ക്ലോസ്‌ ആയി‌ട്ടുണ്ടെങ്കില്‍‌ O‌ptions മെനുവിലെ‌ ‌Recover Last ‌S‌ession എന്ന‌ ഒപ്ഷനുപയോഗിച്ച്‌ ആ‌ ടെക്സ്റ്റ്‌ റിക്കവര്‍‌ ചെയ്യാവുന്നതാണ്‌.
+                <br>
+            <br>
+
+ടെക്സ്റ്റ്‌ ഏരിയയിലുള്ള‌ ടെക്സ്റ്റിലെ‌ പ്രത്യേക‌ വാക്കുകള്‍‌ കണ്ടെത്തി‌ അവക്ക്‌ പകരം‌ മറ്റു‌ വാക്കുകള്‍‌ റീപ്ലേസ്‌ ചെയ്യാന്‍‌ Find and Replace ഉപയോഗപ്പെടുത്താം‌. Find‌ ‌and Replace ഡയലോഗ്‌ ബോക്സിലെ‌ Find ബട്ടണ്‍‌ പ്രസ്സ്‌ ചെയ്യുമ്പോള്‍‌‌, നിങ്ങള്‍‌ എന്റര്‍‌ ചെയ്ത‌ വാക്കുമായി‌ ബന്ധമുണ്ടെന്ന്‌ തോന്നുന്ന‌ നിരവധി‌‌ വാക്കുകള്‍‌ വലതു‌ ഭാഗത്ത്‌ പ്രത്യക്ഷപ്പെടാം‌.‌ അവയെയും‌ നിങ്ങള്‍ക്ക്‌ മാറ്റണമെന്നുണ്ടെങ്കില്‍‌  അതില്‍‌ ക്ലിക്ക്‌ ചെയ്ത്‌ അനുയോജ്യമായ‌ വാക്കുകള്‍‌ ഉപയോഗിച്ച്‌ റീപ്ലേസ്‌ ചെയ്യാവുന്നതാണ്‌. 
+                <br>
+            <br>
+
+Search ബട്ടണ്‍‌ ( ലെന്‍സ്‌ ഐക്കണ്‍‌ ) ക്ലിക്ക്‌ ചെയ്താല്‍‌ സെര്‍ച്ച്‌ ബോക്സ്‌ ടെക്സ്റ്റ്‌ ഏരിയയുടെ‌‌ താഴ്ഭാഗത്തായി‌ പ്രത്യക്ഷപ്പെടും‌. 
+                <br>
+            <br>
+
+Brush ബട്ടണില്‍‌ ക്ലിക്ക്‌ ചെയ്താല്‍‌ മലയാള‌ ജാലകത്തിന്റെ‌ വ്യത്യസ്തമായ‌ നാല്‌ തീമുകള്‍‌ കാണാം‌. ഇഷ്ടമുള്ളത്‌ നിങ്ങള്‍ക്ക്‌ സെറ്റ്‌ ചെയ്യാം‌. 
+<br>
+            <br>
+സൈഡ് ബാറില്‍ കാണുന്ന ഒപ്ഷനുകള്‍ ഉപയോഗപ്പെടുത്തി ഫയലുകള്‍ ഓപ്പണ്‍ ചെയ്യാനും പുതിയവ തുടങ്ങാനും സേവ് ചെയ്യാനും സാധിക്കും.
+
+                <br>
+            <br>
+ടെക്സ്റ്റ് ഏരിയ വലുതായി കാണാന്‍ Compact View ഐക്കണില്‍ ക്ലിക്ക് ചെയ്യാം.
+
+<br>
+            <br>
+
+                 </div>
+            <h3>Different keyboard Layouts</h3>
+            <div id="ThreeButtons">
+                <button id='Pho' onclick="showphoData()" class="activeKeyboard" >Malayalam Phonetic</button>
+                <button id='Ins' onclick="showinsData()" class="disabledKeyboard">Malayalam Inscript</button>
+                <button id='ASC' onclick="showascData()" class="disabledKeyboard">Malayalam ASCII</button>
+                <button id='ArabicPho' onclick="showArabicPhoData()" class="disabledKeyboard">Arabic Phonetic</button>
+                <button id='Arabic101' onclick="showArabic101Data()" class="disabledKeyboard">Arabic 101</button>
+            </div>
+            
+            <div id="PhoKeyboard"  class="keyboardSection" >
+                <h2>അക്ഷരമാല</h2>
+                <div class="flex-container">
+                  <div>അ<p class="letter">a</p></div>
+                  <div>ആ<p class="letter">aa / A</p></div>
+                  <div>ഇ<p class="letter">i</p></div>
+                  <div>ഈ<p class="letter">ii / ee</p></div>
+                  <div>ഉ<p class="letter">u</p></div>
+                  <div>ഊ<p class="letter">uu / U</p></div>
+                  <div>ഋ<p class="letter">rr</p></div>
+                  <div>എ<p class="letter">e</p></div>
+                  <div>ഏ<p class="letter">E</p></div>
+                  <div>ഐ<p class="letter">ai /I</p></div>
+                  <div>ഒ<p class="letter">o</p></div>
+                  <div>ഓ<p class="letter">O</p></div>
+                  <div>ഔ<p class="letter">au</p></div>
+                  <div>അം<p class="letter">am</p></div>
+                  <div>അഃ<p class="letter">aH</p></div>
+                  <div> ്‌<p class="letter">~</p></div>
+                  <div>ക<p class="letter">ka</p></div>
+                  <div>ഖ<p class="letter">kha</p></div>
+                  <div>ഗ<p class="letter">ga</p></div>
+                  <div>ഘ<p class="letter">gha</p></div>
+                  <div>ങ<p class="letter">nga</p></div>
+                  <div>ച<p class="letter">cha</p></div>
+                  <div>ഛ<p class="letter">chha</p></div>
+                  <div>ജ<p class="letter">ja</p></div>
+                  <div>ഝ<p class="letter">jha</p></div>
+                  <div>ഞ<p class="letter">nja</p></div>
+                  <div>ട<p class="letter">Ta</p></div>
+                  <div>ഠ<p class="letter">Tha</p></div>
+                  <div>ഡ<p class="letter">Da</p></div>
+                  <div>ഢ<p class="letter">Dha</p></div>
+                  <div>ണ<p class="letter">Na</p></div>
+                  <div>ത<p class="letter">tha</p></div>
+                  <div>ഥ<p class="letter">thha</p></div>
+                  <div>ദ<p class="letter">da</p></div>
+                  <div>ധ<p class="letter">dha</p></div>
+                  <div>ന<p class="letter">na</p></div>
+                  <div>പ<p class="letter">pa</p></div>
+                  <div>ഫ<p class="letter">pha</p></div>
+                  <div>ബ<p class="letter">ba</p></div>
+                  <div>ഭ<p class="letter">bha</p></div>
+                  <div>മ<p class="letter">ma</p></div>
+                  <div>യ<p class="letter">ya</p></div>
+                  <div>ര<p class="letter">ra</p></div>
+                  <div>ല<p class="letter">la</p></div>
+                  <div>വ<p class="letter">va /wa</p></div>
+                  <div>ശ<p class="letter">za</p></div>
+                  <div>ഷ<p class="letter">sha</p></div>
+                  <div>സ<p class="letter">sa</p></div>
+                  <div>ഹ<p class="letter">ha</p></div>
+                  <div>ള<p class="letter">La</p></div>
+                  <div>ഴ<p class="letter">zha</p></div>
+                  <div>റ<p class="letter">Ra</p></div>
+
+
+                </div>
+
+                <h2>കൂട്ടക്ഷരങ്ങള്‍</h2>
+                <div class="flex-container">
+
+                  <div>ക്ക<p class="letter">kka /Ka</p></div>
+                  <div>ത്ത<p class="letter">ththa</p></div>
+                  <div>ച്ച<p class="letter">chcha</p></div>
+                  <div>ജ്ജ<p class="letter">jja</p></div>
+                  <div>ഞ്ഞ<p class="letter">njnja</p></div>
+                  <div>ട്ട<p class="letter">TTa</p></div>
+                  <div>ണ്ണ<p class="letter">NNa</p></div>
+                  <div>ത്ഥ<p class="letter">ththha</p></div>
+                  <div>ദ്ധ<p class="letter">ddha</p></div>
+                  <div>ന്ന<p class="letter">nna</p></div>
+                  <div>പ്പ<p class="letter">ppa</p></div>
+                  <div>ക്ഷ<p class="letter">ksha</p></div>
+                  <div>ഹ്ന<p class="letter">hna</p></div>
+                  <div>റ്റ<p class="letter">ta</p></div>
+                  <div>ഞ്ച<p class="letter">njcha</p></div>
+                  <div>മ്പ<p class="letter">mpa</p></div>
+                  <div>ങ്ക<p class="letter">nka</p></div>
+                  <div>ശ്ച<p class="letter">zcha</p></div>
+                  <div>ങ്ങ<p class="letter">ngnga</p></div>
+                  <div>ണ്ട<p class="letter">NTa</p></div>
+                  <div>ന്റ<p class="letter">nta</p></div>
+                  <div>ന്ത<p class="letter">ntha</p></div>
+                  <div>സ്ഥ<p class="letter">sthha</p></div>
+                  <div>ന്ദ<p class="letter">nda</p></div>
+                  <div>സ്റ്റ<p class="letter">sta</p></div>
+                  <div>ന്ധ<p class="letter">ndha</p></div>
+                  <div>ക്ത<p class="letter">ktha</p></div>
+                  <div>ത്സ<p class="letter">thsa</p></div>
+                  <div>ന്മ<p class="letter">nma</p></div>
+                  <div>ത്മ<p class="letter">thma</p></div>
+                  <div>ജ്ഞ<p class="letter">jnja</p></div>
+                  <div>ച്ഛ<p class="letter">chchha</p></div>
+                  <div>ന്ഥ<p class="letter">nthha</p></div>
+                  <div>ത്ഭ<p class="letter">thbha</p></div>
+                  <div>ണ്മ<p class="letter">Nma</p></div>
+                  <div>ഡ്ഢ<p class="letter">DDha</p></div>
+
+
+                </div>
+
+                <h2>ചില്ലക്ഷരങ്ങള്‍</h2>
+
+                <div class="flex-container">
+                  <div>ണ്‍<p class="letter">N</p></div>
+                  <div>ന്‍<p class="letter">n</p></div>
+                  <div>ള്‍<p class="letter">L</p></div>
+                  <div>ല്‍<p class="letter">l</p></div>
+                  <div>ര്‍<p class="letter">r</p></div>
+                </div>
+
+                <h2>സ്വരാക്ഷരങ്ങള്‍ ചേര്‍ന്ന് വരുമ്പോള്‍</h2>
+
+                <div class="flex-container">
+                  <div>കാ<p class="letter">kaa /kA</p></div>
+                  <div>കി<p class="letter">ki</p></div>
+                  <div>കീ<p class="letter">kii /kI</p></div>
+                  <div>കു<p class="letter">ku</p></div>
+                  <div>കൂ<p class="letter">kuu /kU</p></div>
+                  <div>കൃ<p class="letter">krr</p></div>
+                  <div>കെ<p class="letter">ke</p></div>
+                  <div>കേ<p class="letter">kE /kae</p></div>
+                  <div>കൈ<p class="letter">kai</p></div>
+                  <div>കൊ<p class="letter">ko</p></div>
+                  <div>കോ<p class="letter">kO /kao</p></div>
+                  <div>കൗ<p class="letter">kau</p></div>
+                  <div>കം<p class="letter">kam</p></div>
+                  <div>കഃ<p class="letter">kaH</p></div>
+                  <div>ക്ര<p class="letter">kra</p></div>
+                  <div>ക്യ<p class="letter">kya</p></div>
+                  <div>ക്<p class="letter">k~</p></div>
+
+
+                </div>
+                
+                <h2>മലയാളം ടൈപ്പിങ്ങില്‍ ശ്രദ്ധിക്കേണ്ട കാര്യങ്ങള്‍</h2>
+        <p class="secDesc">
+            വ എന്ന അക്ഷരത്തിന്‌ w , v ഇവ രണ്ടും ഉപയോഗിക്കാം. പക്ഷെ മറ്റക്ഷരങ്ങളുമായി ചേര്‍ന്നു വരുമ്പോള്‍ ചെറിയ വ്യത്യാസങ്ങളുണ്ട്.
+            </p>
+
+
+        <p class="secDesc">
+            w, v ഇവ ചന്ദ്രക്കലയുമായി ചേരുമ്പോള്‍ ഒരു പോലെയാണ്‌.
+            </p>
+
+
+        <p class="examples">
+            vi<span class="TextHightlight">zw</span>asthhan - വിശ്വസ്ഥന്‍
+            <br>
+            vi<span class="TextHightlight">zv</span>asthhan - വിശ്വസ്ഥന്‍
+
+            </p>
+
+        <p class="secDesc">
+            എന്നാല്‍ ചില വ്യത്യാസങ്ങളുണ്ട്.
+            </p>
+
+
+    <p class="examples">
+    a<span class="TextHightlight">nw</span>ar - അന്വര്‍
+        <br/>
+    a<span class="TextHightlight">nv</span>ar - അന്‍വര്‍
+    <br/>
+    <br/>
+    sa<span class="TextHightlight">mw</span>idhaanam - സമ്വിധാനം<br/>
+    sa<span class="TextHightlight">mv</span>idhaanam - സംവിധാനം<br/>
+    <br/>
+    sa<span class="TextHightlight">rww</span>am - സര്വ്വം<br/>
+    sa<span class="TextHightlight">rvv</span>am - സര്‍വ്വം
+    </p>
+
+
+    
+            </div>
+            <div id="InsKeyboard"  class="keyboardSection" >
+                 <h2>അക്ഷരമാല</h2>
+                  <div class="flex-container">
+                  <div>അ<p class="letter">D</p></div>
+                  <div>ആ<p class="letter">E</p></div>
+                  <div>ഇ<p class="letter">F</p></div>
+                  <div>ഈ<p class="letter">R</p></div>
+                  <div>ഉ<p class="letter">G</p></div>
+                  <div>ഊ<p class="letter">T</p></div>
+                  <div>ഋ<p class="letter">+</p></div>
+                  <div>എ<p class="letter">Z</p></div>
+                  <div>ഏ<p class="letter">S</p></div>
+                  <div>ഐ<p class="letter">W</p></div>
+                  <div>ഒ<p class="letter">~</p></div>
+                  <div>ഓ<p class="letter">A</p></div>
+                  <div>ഔ<p class="letter">Q</p></div>
+                  <div>അം<p class="letter">Dx</p></div>
+                  <div>അഃ<p class="letter">D_</p></div>
+                  <div> ്‌<p class="letter">d</p></div>
+                  <div>ക<p class="letter">k</p></div>
+                  <div>ഖ<p class="letter">K</p></div>
+                  <div>ഗ<p class="letter">i</p></div>
+                  <div>ഘ<p class="letter">I</p></div>
+                  <div>ങ<p class="letter">U</p></div>
+                  <div>ച<p class="letter">;</p></div>
+                  <div>ഛ<p class="letter">:</p></div>
+                  <div>ജ<p class="letter">p</p></div>
+                  <div>ഝ<p class="letter">P</p></div>
+                  <div>ഞ<p class="letter">}</p></div>
+                  <div>ട<p class="letter">'</p></div>
+                  <div>ഠ<p class="letter">"</p></div>
+                  <div>ഡ<p class="letter">[</p></div>
+                  <div>ഢ<p class="letter">{</p></div>
+                  <div>ണ<p class="letter">C</p></div>
+                  <div>ത<p class="letter">l</p></div>
+                  <div>ഥ<p class="letter">L</p></div>
+                  <div>ദ<p class="letter">o</p></div>
+                  <div>ധ<p class="letter">O</p></div>
+                  <div>ന<p class="letter">v</p></div>
+                  <div>പ<p class="letter">h</p></div>
+                  <div>ഫ<p class="letter">H</p></div>
+                  <div>ബ<p class="letter">y</p></div>
+                  <div>ഭ<p class="letter">Y</p></div>
+                  <div>മ<p class="letter">c</p></div>
+                  <div>യ<p class="letter">/</p></div>
+                  <div>ര<p class="letter">j</p></div>
+                  <div>ല<p class="letter">n</p></div>
+                  <div>വ<p class="letter">b</p></div>
+                  <div>ശ<p class="letter">M</p></div>
+                  <div>ഷ<p class="letter"><</p></div>
+                  <div>സ<p class="letter">m</p></div>
+                  <div>ഹ<p class="letter">u</p></div>
+                  <div>ള<p class="letter">N</p></div>
+                  <div>ഴ<p class="letter">B</p></div>
+                  <div>റ<p class="letter">J</p></div>
+                    </div>
+                
+                <h2>കൂട്ടക്ഷരങ്ങള്‍</h2>
+                <div class="flex-container">
+
+                  <div>ക്ക<p class="letter">kdk</p></div>
+                  <div>ത്ത<p class="letter">ldl</p></div>
+                  <div>ച്ച<p class="letter">;d;</p></div>
+                  <div>ജ്ജ<p class="letter">pdp</p></div>
+                  <div>ഞ്ഞ<p class="letter">}d}</p></div>
+                  <div>ട്ട<p class="letter">'d'</p></div>
+                  <div>ണ്ണ<p class="letter">CdC</p></div>
+                  <div>ത്ഥ<p class="letter">ldL</p></div>
+                  <div>ദ്ധ<p class="letter">odO</p></div>
+                  <div>ന്ന<p class="letter">vdv</p></div>
+                  <div>പ്പ<p class="letter">hdh</p></div>
+                  <div>ക്ഷ<p class="letter">kd<</p></div>
+                  <div>ഹ്ന<p class="letter">udn</p></div>
+                  <div>റ്റ<p class="letter">JdJ</p></div>
+                  <div>ഞ്ച<p class="letter">}dp</p></div>
+                  <div>മ്പ<p class="letter">cdh</p></div>
+                  <div>ങ്ക<p class="letter">Udk</p></div>
+                  <div>ശ്ച<p class="letter">Md;</p></div>
+                  <div>ങ്ങ<p class="letter">UdU</p></div>
+                  <div>ണ്ട<p class="letter">Cd'</p></div>
+                  <div>ന്റ<p class="letter">vdJ</p></div>
+                  <div>ന്ത<p class="letter">vdl</p></div>
+                  <div>സ്ഥ<p class="letter">mdL</p></div>
+                  <div>ന്ദ<p class="letter">vdo</p></div>
+                  <div>സ്റ്റ<p class="letter">mdJdJ</p></div>
+                  <div>ന്ധ<p class="letter">vdO</p></div>
+                  <div>ക്ത<p class="letter">kdl</p></div>
+                  <div>ത്സ<p class="letter">ldm</p></div>
+                  <div>ന്മ<p class="letter">vdc</p></div>
+                  <div>ത്മ<p class="letter">ldc</p></div>
+                  <div>ജ്ഞ<p class="letter">pd}</p></div>
+                  <div>ച്ഛ<p class="letter">;d:</p></div>
+                  <div>ന്ഥ<p class="letter">vdL</p></div>
+                  <div>ത്ഭ<p class="letter">ldY</p></div>
+                  <div>ണ്മ<p class="letter">Cdc</p></div>
+                  <div>ഡ്ഢ<p class="letter">[d{</p></div>
+
+
+                </div>
+                
+                <h2>ചില്ലക്ഷരങ്ങള്‍</h2>
+
+                <div class="flex-container">
+                  <div>ണ്‍<p class="letter">Cd]</p></div>
+                  <div>ന്‍<p class="letter">vd]</p></div>
+                  <div>ള്‍<p class="letter">Nd]</p></div>
+                  <div>ല്‍<p class="letter">nd]</p></div>
+                  <div>ര്‍<p class="letter">jd]</p></div>
+                </div>
+                
+                <h2>സ്വരാക്ഷരങ്ങള്‍ ചേര്‍ന്ന് വരുമ്പോള്‍</h2>
+
+                <div class="flex-container">
+                  <div>കാ<p class="letter">ke</p></div>
+                  <div>കി<p class="letter">kf</p></div>
+                  <div>കീ<p class="letter">kr</p></div>
+                  <div>കു<p class="letter">kg</p></div>
+                  <div>കൂ<p class="letter">kt</p></div>
+                  <div>കൃ<p class="letter">k=</p></div>
+                  <div>കെ<p class="letter">kz</p></div>
+                  <div>കേ<p class="letter">ks</p></div>
+                  <div>കൈ<p class="letter">kw</p></div>
+                  <div>കൊ<p class="letter">k`</p></div>
+                  <div>കോ<p class="letter">ka</p></div>
+                  <div>കൗ<p class="letter">kq</p></div>
+                  <div>കം<p class="letter">kx</p></div>
+                  <div>കഃ<p class="letter">k_</p></div>
+                  <div>ക്ര<p class="letter">kdj</p></div>
+                  <div>ക്യ<p class="letter">kd/</p></div>
+                  <div>ക്<p class="letter">kd</p></div>
+
+
+                </div>
+
+                 </div>
+            <div id="ASCKeyboard"  class="keyboardSection" >
+                  <h2>അക്ഷരമാല</h2>
+                <div class="flex-container">
+                  <div>അ<p class="letter">A</p></div>
+                  <div>ആ<p class="letter">B</p></div>
+                  <div>ഇ<p class="letter">C</p></div>
+                  <div>ഈ<p class="letter">Cu</p></div>
+                  <div>ഉ<p class="letter">D</p></div>
+                  <div>ഊ<p class="letter">Du</p></div>
+                  <div>ഋ<p class="letter">E</p></div>
+                  <div>എ<p class="letter">F</p></div>
+                  <div>ഏ<p class="letter">G</p></div>
+                  <div>ഐ<p class="letter">Fs</p></div>
+                  <div>ഒ<p class="letter">H</p></div>
+                  <div>ഓ<p class="letter">Hm</p></div>
+                  <div>ഔ<p class="letter">Hu</p></div>
+                  <div>അം<p class="letter">Aw</p></div>
+                  <div>അഃ<p class="letter">Ax</p></div>
+                  <div> ്‌<p class="letter">v</p></div>
+                  <div>ക<p class="letter">I</p></div>
+                  <div>ഖ<p class="letter">J</p></div>
+                  <div>ഗ<p class="letter">K</p></div>
+                  <div>ഘ<p class="letter">L</p></div>
+                  <div>ങ<p class="letter">M</p></div>
+                  <div>ച<p class="letter">N</p></div>
+                  <div>ഛ<p class="letter">O</p></div>
+                  <div>ജ<p class="letter">P</p></div>
+                  <div>ഝ<p class="letter">Q</p></div>
+                  <div>ഞ<p class="letter">R</p></div>
+                  <div>ട<p class="letter">S</p></div>
+                  <div>ഠ<p class="letter">T</p></div>
+                  <div>ഡ<p class="letter">U</p></div>
+                  <div>ഢ<p class="letter">V</p></div>
+                  <div>ണ<p class="letter">W</p></div>
+                  <div>ത<p class="letter">X</p></div>
+                  <div>ഥ<p class="letter">Y</p></div>
+                  <div>ദ<p class="letter">Z</p></div>
+                  <div>ധ<p class="letter">[</p></div>
+                  <div>ന<p class="letter">\</p></div>
+                  <div>പ<p class="letter">]</p></div>
+                  <div>ഫ<p class="letter">^</p></div>
+                  <div>ബ<p class="letter">_</p></div>
+                  <div>ഭ<p class="letter">`</p></div>
+                  <div>മ<p class="letter">a</p></div>
+                  <div>യ<p class="letter">b</p></div>
+                  <div>ര<p class="letter">c</p></div>
+                  <div>റ<p class="letter">d</p></div>
+                  <div>ല<p class="letter">e</p></div>
+                  <div>ള<p class="letter">f</p></div>
+                  <div>ഴ<p class="letter">g</p></div>
+                  <div>വ<p class="letter">h</p></div>
+                  <div>ശ<p class="letter">i</p></div>
+                  <div>ഷ<p class="letter">j</p></div>
+                  <div>സ<p class="letter">k</p></div>
+                  <div>ഹ<p class="letter">l</p></div>
+                    </div>
+                
+                <h2>കൂട്ടക്ഷരങ്ങള്‍</h2>
+                
+                താഴെ കാണുന്ന അക്ഷരങ്ങള്‍ Alt Key Combination ആയിട്ടാണ് എന്റര്‍ ചെയ്യുക. ആദ്യം Alt Key ഒരു പ്രാവശ്യം Press  ചെയ്യുക. പിന്നെ അതിന്റെ Code നമ്പര്‍ പാഡില്‍ അടിക്കുക. Alt key പ്രസ്സ് ചെയ്ത് പിടിക്കണമെന്നില്ല.
+
+                <br>
+                <br>
+                <div class="flex-container">
+                  <div>ക്ക<p class="letter">Alt+0161</p></div>
+                  <div>ക്ല<p class="letter">Alt+0162</p></div>
+                  <div>ക്ഷ<p class="letter">Alt+0163</p></div>
+                  <div>ഗ്ഗ<p class="letter">Alt+0164</p></div>
+                  <div>ഗ്ല<p class="letter">Alt+0165</p></div>
+                  <div>ങ്ക<p class="letter">Alt+0166</p></div>
+                  <div>ങ്ങ<p class="letter">Alt+0167</p></div>
+                  <div>ഞ്ച<p class="letter">Alt+0169</p></div>
+                  <div>ഞ്ഞ<p class="letter">Alt+0170</p></div>
+                  <div>ട്ട<p class="letter">Alt+0171</p></div>
+                  
+                  <div>ണ്ട<p class="letter">Alt+0173</p></div>
+                  <div>ണ്ണ<p class="letter">Alt+0174</p></div>
+                  <div>ത്ത<p class="letter">Alt+0175</p></div>
+                  <div>ത്ഥ<p class="letter">Alt+0176</p></div>
+                  <div>ദ്ദ<p class="letter">Alt+0177</p></div>
+                  <div>ദ്ധ<p class="letter">Alt+0178</p></div>
+                  
+                  <div>ന്ത<p class="letter">Alt+0180</p></div>
+                  <div>ന്ദ<p class="letter">Alt+0181</p></div>
+                  <div>ന്ന<p class="letter">Alt+0182</p></div>
+                  <div>ന്മ<p class="letter">Alt+0183</p></div>
+                  <div>പ്പ<p class="letter">Alt+0184</p></div>
+                  <div>പ്ല<p class="letter">Alt+0185</p></div>
+                  <div>ബ്ബ<p class="letter">Alt+0186</p></div>
+                  <div>ബ്ല<p class="letter">Alt+0187</p></div>
+                  <div>മ്പ<p class="letter">Alt+0188</p></div>
+                  <div>മ്മ<p class="letter">Alt+0189</p></div>
+                  <div>മ്ല<p class="letter">Alt+0190</p></div>
+                  <div>യ്യ<p class="letter">Alt+0191</p></div>
+                  
+                  <div>റ്റ<p class="letter">Alt+0193</p></div>
+                  
+                  <div>ല്ല<p class="letter">Alt+0195</p></div>
+                  
+                  <div>ള്ള<p class="letter">Alt+0197</p></div>
+                  <div>വ്വ<p class="letter">Alt+0198</p></div>
+                  <div>ശ്ല<p class="letter">Alt+0199</p></div>
+                  <div>ശ്ശ<p class="letter">Alt+0200</p></div>
+                  <div>സ്ല<p class="letter">Alt+0201</p></div>
+                  <div>സ്സ<p class="letter">Alt+0202</p></div>
+                  <div>ഹ്ല<p class="letter">Alt+0203</p></div>
+                  <div>സ്റ്റ<p class="letter">Alt+0204</p></div>
+                  <div>ഡ്ഡ<p class="letter">Alt+0205</p></div>
+                  <div>ക്ട<p class="letter">Alt+0206</p></div>
+                  <div>ബ്ധ<p class="letter">Alt+0207</p></div>
+                  <div>ബ്ദ<p class="letter">Alt+0208</p></div>
+                  <div>ച്ഛ<p class="letter">Alt+0209</p></div>
+                  <div>ഹ്മ<p class="letter">Alt+0210</p></div>
+                  <div>ഹ്ന<p class="letter">Alt+0211</p></div>
+                  <div>ന്ധ<p class="letter">Alt+0212</p></div>
+                  <div>ത്സ<p class="letter">Alt+0213</p></div>
+                  <div>ജ്ജ<p class="letter">Alt+0214</p></div>
+                  <div>ണ്മ<p class="letter">Alt+0215</p></div>
+                  <div>സ്ഥ<p class="letter">Alt+0216</p></div>
+                  <div>ന്ഥ<p class="letter">Alt+0217</p></div>
+                  <div>ജ്ഞ<p class="letter">Alt+0218</p></div>
+                  <div>ത്ഭ<p class="letter">Alt+0219</p></div>
+                  <div>ഗ്മ<p class="letter">Alt+0220</p></div>
+                  <div>ശ്ച<p class="letter">Alt+0221</p></div>
+                  <div>ണ്ഡ<p class="letter">Alt+0222</p></div>
+                  <div>ത്മ<p class="letter">Alt+0223</p></div>
+                  <div>ക്ത<p class="letter">Alt+0224</p></div>
+                  <div>ഗ്ന<p class="letter">Alt+0225</p></div>
+                  <div>ന്റ<p class="letter">Alt+0226</p></div>
+                  <div>ഷ്ട<p class="letter">Alt+0227</p></div>
+                  <div>റ്റ<p class="letter">Alt+0228</p></div>
+                  <div>ണ്ട<p class="letter">Alt+0239</p></div>
+                  <div>ല്‍<p class="letter">Alt+0240</p></div>
+                  <div>ല്ല<p class="letter">Alt+0241</p></div>
+                  <div>ന്മ<p class="letter">Alt+0242</p></div>
+                  <div>ന്ന<p class="letter">Alt+0243</p></div>
+                  <div>ഞ്ച<p class="letter">Alt+0244</p></div>
+                </div>
+                
+                <h2>ചില്ലക്ഷരങ്ങള്‍</h2>
+
+                <div class="flex-container">
+                  <div>ണ്‍<p class="letter">Alt+0172</p></div>
+                  <div>ന്‍<p class="letter">Alt+0179</p></div>
+                  <div>ര്‍<p class="letter">Alt+0192</p></div>
+                  <div>ല്‍<p class="letter">Alt+0194</p></div>
+                  <div>ള്‍<p class="letter">Alt+0196</p></div>
+                </div>
+                
+                <h2>സ്വരാക്ഷരങ്ങള്‍ ചേര്‍ന്ന് വരുമ്പോള്‍</h2>
+
+                <div class="flex-container">
+                  <div>കാ<p class="letter">Im</p></div>
+                  <div>കി<p class="letter">In</p></div>
+                  <div>കീ<p class="letter">Io</p></div>
+                  <div>കു<p class="letter">Ip</p></div>
+                  <div>കൂ<p class="letter">Iq</p></div>
+                  <div>കൃ<p class="letter">Ir</p></div>
+                  <div>കെ<p class="letter">Is</p></div>
+                  <div>കേ<p class="letter">It</p></div>
+                  <div>കൈ<p class="letter">Iss</p></div>
+                  <div>കൊ<p class="letter">Ism</p></div>
+                  <div>കോ<p class="letter">Itm</p></div>
+                  <div>കൗ<p class="letter">Iu</p></div>
+                  <div>കം<p class="letter">Iw</p></div>
+                  <div>കഃ<p class="letter">k_</p></div>
+                  <div>ക്ര<p class="letter">I{</p></div>
+                  <div>ക്യ<p class="letter">Iy</p></div>
+                  <div>ക്<p class="letter">Iv</p></div>
+
+
+                </div>
+                
+                 </div>
+            <div id="ArabicPhoKeyboard"  class="keyboardSection" >
+                  <h2>അക്ഷരമാല</h2>
+                <div class="flex-container">
+                   <div>ا<p class="letter">a</p></div>
+                  <div>ب<p class="letter">b</p></div>
+                  <div>ت<p class="letter">t</p></div>
+                  <div>ث<p class="letter">t'</p></div>
+                  <div>ج<p class="letter">j</p></div>
+                  <div>ح<p class="letter">H</p></div>
+                  <div>خ<p class="letter">H'</p></div>
+                  <div>د<p class="letter">d</p></div>
+                  <div>ذ<p class="letter">d'</p></div>
+                  <div>ر<p class="letter">r</p></div>
+                  <div>ز<p class="letter">z</p></div>
+                  <div>س<p class="letter">s</p></div>
+                  <div>ش<p class="letter">s'</p></div>
+                  <div>ص<p class="letter">S</p></div>
+                  <div>ض<p class="letter">D</p></div>
+                  <div>ط<p class="letter">T</p></div>
+                  <div>ظ<p class="letter">Z</p></div>
+                  <div>ع<p class="letter">g</p></div>
+                  <div>غ<p class="letter">g'</p></div>
+                  <div>ف<p class="letter">f</p></div>
+                  <div>ق<p class="letter">q</p></div>
+                  <div>ك<p class="letter">k</p></div>
+                  <div>ل<p class="letter">l</p></div>
+                  <div>م<p class="letter">m</p></div>
+                  <div>ن<p class="letter">n</p></div>
+                  <div>ه<p class="letter">h</p></div>
+                  <div>و<p class="letter">w</p></div>
+                  <div>ي<p class="letter">y</p></div>
+                  <div>ء<p class="letter">-</p></div>
+                  <div>ٍٍ<p class="letter">I</p></div>
+                  <div>ِ<p class="letter">i</p></div>
+                  <div>ْ<p class="letter">v</p></div>
+                  <div>ّ<p class="letter">p</p></div>
+                  <div>ٌ<p class="letter">O</p></div>
+                  <div>ُ<p class="letter">o</p></div>
+                  <div>ً<p class="letter">U</p></div>
+                  <div>َ<p class="letter">u</p></div>
+                  <div>آ<p class="letter">aa</p></div>
+                  <div>ٱ<p class="letter">e</p></div>
+                  <div>أ<p class="letter">-a</p></div>
+                  <div>إ<p class="letter">a--</p></div>
+                  <div>ة<p class="letter">h'</p></div>
+                  <div>ؤ<p class="letter">w--</p></div>
+                  <div>ئ<p class="letter">y--</p></div>
+                  <div>ى<p class="letter">Y</p></div>
+                  <div>ـ<p class="letter">x</p></div>
+                  <div>،<p class="letter">c</p></div>
+                  <div>؛<p class="letter">;</p></div>
+                  <div>؟<p class="letter">?</p></div>
+
+                    </div>  
+                 </div>
+            <div id="Arabic101Keyboard"  class="keyboardSection" >
+                <h2>അക്ഷരമാല</h2>
+                <div class="flex-container">
+                  <div>ا<p class="letter">h</p></div>
+                  <div>ب<p class="letter">f</p></div>
+                  <div>ت<p class="letter">j</p></div>
+                  <div>ث<p class="letter">e</p></div>
+                  <div>ج<p class="letter">{</p></div>
+                  <div>ح<p class="letter">p</p></div>
+                  <div>خ<p class="letter">o</p></div>
+                  <div>د<p class="letter">}</p></div>
+                  <div>ذ<p class="letter">`</p></div>
+                  <div>ر<p class="letter">v</p></div>
+                  <div>ز<p class="letter">.</p></div>
+                  <div>س<p class="letter">s</p></div>
+                  <div>ش<p class="letter">a</p></div>
+                  <div>ص<p class="letter">w</p></div>
+                  <div>ض<p class="letter">q</p></div>
+                  <div>ط<p class="letter">'</p></div>
+                  <div>ظ<p class="letter">/</p></div>
+                  <div>ع<p class="letter">u</p></div>
+                  <div>غ<p class="letter">y</p></div>
+                  <div>ف<p class="letter">t</p></div>
+                  <div>ق<p class="letter">r</p></div>
+                  <div>ك<p class="letter">;</p></div>
+                  <div>ل<p class="letter">g</p></div>
+                  <div>م<p class="letter">l</p></div>
+                  <div>ن<p class="letter">k</p></div>
+                  <div>ه<p class="letter">i</p></div>
+                  <div>و<p class="letter">,</p></div>
+                  <div>ي<p class="letter">d</p></div>
+                  <div>ء<p class="letter">x</p></div>
+                  <div>ٍٍ<p class="letter">S</p></div>
+                  <div>ِ<p class="letter">A</p></div>
+                  <div>ْ<p class="letter">X</p></div>
+                  <div>ّ<p class="letter">~</p></div>
+                  <div>ٌ<p class="letter">R</p></div>
+                  <div>ُ<p class="letter">E</p></div>
+                  <div>ً<p class="letter">W</p></div>
+                  <div>َ<p class="letter">Q</p></div>
+                  <div>آ<p class="letter">N</p></div>
+                  <div>إ<p class="letter">Y</p></div>
+                  <div>ة<p class="letter">m</p></div>
+                  <div>ؤ<p class="letter">c</p></div>
+                  <div>ئ<p class="letter">z</p></div>
+                  <div>ى<p class="letter">n</p></div>
+                  <div>ـ<p class="letter">j</p></div>
+                  <div>،<p class="letter">K</p></div>
+                  <div>؛<p class="letter">P</p></div>
+                  <div>؟<p class="letter">?</p></div>
+                  <div>لأ<p class="letter">G</p></div>
+                  <div>لإ<p class="letter">T</p></div>
+                  <div>لآ<p class="letter">B</p></div>
+
+
+                </div> 
+             </div>    
+                 
+            <br>
+            <h2>അക്ഷരങ്ങള്‍ കൂടിച്ചേരാതിരിക്കാന്‍</h2>
+            <p class="secDesc">
+            അക്ഷരങ്ങള്‍ തൊട്ടുമുമ്പിലെ അക്ഷരങ്ങളുമായി ചേര്‍ന്ന് വരാതെ വേണമെന്നുണ്ടെങ്കില്‍ ഒരു vertical bar <span class="hightlight">|</span>  (കീ‌ബോര്‍ഡില്‍‌ എന്റര്‍‌ ബട്ടണു‌ മുകളില്‍‌ ) ഇന്‍സര്‍ട്ട് ചെയ്താല്‍ മതി. അപ്പോള്‍ പ്രത്യക്ഷമായി ഒന്നും സംഭവിക്കില്ല പക്ഷെ, മുന്‍‌ അക്ഷരത്തിനും ഇനി ടൈപ്പ് ചെയ്യാന്‍ പോകുന്ന അക്ഷരത്തിനുമിടയില്‍ അദൃശ്യമായ ഒരു ബ്രെയ്ക് ചേര്‍ക്കപ്പെടും. എന്നാല്‍ സ്പേസിനു ശേഷ‌മാണ്‌ vertical bar‌ ബട്ടണ്‍‌ പ്രസ്‌ ചെയ്യുന്നതെങ്കില്‍‌ അവിടെ‌ ‌vertical bar തന്നെയാണ്‌ ഇന്‍സര്‍ട്ട്‌ ചെയ്യപ്പെടുക‌.
+
+            </p>
+
+    <p class="examples">
+    vizuddha khuraan  - വിശുദ്ധ ഖുരാന്‍ <br/>
+    vizuddha khu<span class="TextHightlight">r|</span>aan -   വിശുദ്ധ ഖുര്‍‌ആന്‍ <br/>
+    samrakshaNam - സമ്രക്ഷണം - <br/>
+    sa<span class="TextHightlight">m|</span>rakshaNam - സം‌രക്ഷണം<br/>
+    pakshe - പക്ഷെ <br/>
+    pa<span class="TextHightlight">k|</span>she - പക്‌ഷെ <br/>
+    ഇടയില്‍ <span class="TextHightlight">|‌‌</span> സ്പേസിനു <span class="TextHightlight">|‌</span> ശേഷം <span class="TextHightlight">|‌</span> vertical bar <span class="TextHightlight">|</span> ചേര്‍ത്താല്‍ 
+    
+            </p>     
+                 
+            <h2>കോണ്ടെക്സ്റ്റ് മെ‌നു‌</h2>
+                 
+
+ടെക്സ്റ്റ് ഏരിയയില്‍ Right Click  ചെയ്ത് കഴിഞ്ഞാല്‍ ലഭിക്കുന്ന മെനുവില്‍ Cut, Copy, Paste എന്നീ ഒപ്ഷനുകള്‍ ലഭ്യമാണ്. ഇവക്ക് യഥാക്രമം <span class="hightlight">Ctrl</span> <span class="hightlight">X</span>, <span class="hightlight">Ctrl</span> <span class="hightlight">C</span>, <span class="hightlight">Ctrl</span> <span class="hightlight">V</span> എന്നിങ്ങനെ ഷോര്‍ട്ട്കട്ടുപയോഗിക്കുകയും ചെയ്യാവുന്നതാണ്.<br><br>
+
+FML, MLKV, ML ഫോര്‍മാറ്റിലുള്ള ടെക്സ്റ്റുകള്‍ Paste from ഒപ്ഷനുകള്‍ ഉപയോഗപ്പെടുത്തി പേസ്റ്റ് ചെയ്യുമ്പോള്‍ ഇംഗ്ലീഷ് വാക്കുകള്‍ അര്‍ഥരഹിതമായ ചില അക്ഷരക്കൂട്ടങ്ങളായി മാറും. അവയെ പഴയ പടി ഇംഗ്ലീഷിലേക്ക് മാറ്റാന്‍ കോണ്ടെക്സ്റ്റ് മെനുവിലെ To English  എന്ന ഒപ്ഷന്‍ ഉപയോഗപ്പെടുത്താം. ഇംഗ്ലീഷിലേക്ക് മാറ്റേണ്ട ടെക്സ്റ്റ് സെലക്ട് ചെയ്ത് Right Click ചെയ്യുക. Context menu വില്‍ നിന്ന് To English സെലക്ട് ചെയ്യുക.  <br><br>  
+
+ indent, Unindent ഒപ്ഷനുകള്‍‌ ഉപയോഗിച്ച്‌ ഒരു‌ കൂട്ടം‌ വരികളെ‌ ടാബ്‌ അലൈന്‍‌ ചെയ്യാന്‍‌ സാധിക്കും‌‌. <br><br>  
+                 
+Add Bullets, Add Numbering ഒപ്ഷനുകള്‍ സെലക്ട് ചെയ്ത വരികളില്‍ ബുള്ളറ്റുകളോ നമ്പറുകളോ ചേര്‍ക്കാന്‍ വേണ്ടിയുള്ളതാണ്. ഇവ റിച്ച് ടെക്സ്റ്റ് എഡിറ്ററുകളിലെ Bullet and Numbering സിസ്റ്റത്തിനു സമാനമല്ലെങ്കിലും‌  വലിയൊരളവോളം പ്രയോജനപ്പെടും.<br><br>  
+                 
+Bold, italic, Strikethrough, Quote, Add Emoji, Clean Text എന്നീ ഒപ്ഷനുകള്‍ സോഷ്യല്‍ മീഡി‌യ‌ക്ക് വേണ്ടി പ്രത്യേകമായി ഉള്‍പ്പെടുത്തിയതാണ്.<br><br>
+
+വാട്ട്സാപ്പ് പോലെയുള്ള ആപ്ലിക്കേഷനുകളില്‍ - ചില വെബ്സൈറ്റുകളിലും -  ചിഹനങ്ങളുപയോഗിച്ച് കൊണ്ട് ടെക്സ്റ്റ് ഫോര്‍മാറ്റ് ചെയ്യാന്‍ കഴിയും.<br><br>
+
+B‌old - സെലക്ട് ചെയ്ത ടെക്സ്റ്റിനെ ബോള്‍ഡ് ആക്കാന്‍ - ‌ <b>Bold example</b><br>
+Italic - സെലക്ട് ചെയ്ത ടെക്സ്റ്റിനെ ഇറ്റാലിക് ആക്കാന്‍ - <i>Italic ‌example</i><br>
+Strikethrough - സെലക്ട് ചെയ്ത ടെക്സ്റ്റിനു നടുവിലൂടെ ഒരു വര വരക്കാന്‍ - <del>Strikethrough example</del><br><br>
+ഈ രൂപത്തിലുള്ള ഫോര്‍മാറ്റിങ്ങ് ചെയ്യുമ്പോള്‍ ടെക്സ്റ്റിന്റെ ഇരുവശത്തും ചില ചിഹ്നങ്ങള്‍ ചേര്‍ക്കപ്പെടും. വാട്ട്സാപ്പില്‍ പേസ്റ്റ് ചെയ്യുമ്പോള്‍ ഇവ കൃത്യമായി ടെക്സ്റ്റിനെ ഫോര്‍മാറ്റ് ചെയ്യുന്നതായി കാണാം.
+<br><br>
+Clean Text ഉപയോഗിച്ച് നമ്മുടെ ടെക്സ്റ്റില്‍ ആഡ് ചെയ്തിട്ടുള്ള ഈ ഫോര്‍മാറ്റുകളെ നീക്കം ചെയ്യാവുന്നതാണ്. <br><br>
+ടെക്സ്റ്റില്‍ ഇമോജികള്‍ ആഡ് ചെയ്യാന്‍ Add Emoji ക്ലിക്ക് ചെയ്യുക. അപ്പോള്‍ വലതു വശത്തായി പ്രത്യക്ഷപ്പെടുന്ന ഇമോജി ബോക്സില്‍ നിന്ന് ആവശ്യമുള്ളവ ആഡ് ചെയ്യാവുന്നതാണ്. ബ്ലാക്ക് ആന്‍ഡ് വൈറ്റ് ആയാണ് കാണുന്നതെങ്കിലും അവ മറ്റു സൈറ്റുകളില്‍ പേസ്റ്റ് ചെയ്യുമ്പോള്‍ കളര്‍ഫുള്‍ ആയിത്തന്നെയാണ് കാണപ്പെടുക.<br><br>
+
+            
+
+            
+            <h2>Available shortcuts</h2>
+                 <span style="color: red">മാക് സിസ്റ്റത്തില്‍ F1, F2, F3 എന്നിവക്ക് പകരം Command key +1, Command key + 2, Command key + 3 എന്നിങ്ങനെയാണ് ഷോട്ട്കട്ടുകള്‍. മറ്റു ഷോട്ട്കട്ടുകളില്‍ Ctrl നു പകരം Command key ഉപയോഗിക്കണം.</span>   
+            <br>
+                 <div id="shortCutArea">
+                     <p><span class="hightlight">F1</span> - ഇംഗ്ലീഷില്‍ ടൈപ്പ് ചെയ്യാന്‍</p>
+            <p><span class="hightlight">F2</span> - മലയാളത്തില്‍‌ ടൈപ്പ് ചെയ്യാന്‍</p>
+            <p><span class="hightlight">F3</span> - അറബിയില്‍‌ ടൈപ്പ് ചെയ്യാന്‍</p>
+            <p><span class="hightlight">Ctrl</span> + <span class="hightlight">O</span> - ഫയല്‍ തുറക്കാന്‍</p>
+            <p><span class="hightlight">Ctrl</span> + <span class="hightlight">N</span> - പുതിയ ഡോക്യുമെന്റ് തുടങ്ങാന്‍</p>
+            
+                 <p><span class="hightlight">Ctrl</span> + <span class="hightlight">S</span> - ഫയല്‍ സേവ് ചെയ്യാന്‍</p>
+            
+            <p><span class="hightlight">Ctrl</span> + <span class="hightlight">C</span> - സെലക്റ്റ് ചെയ്ത ടെക്സ്റ്റ് കോപ്പി ചെയ്യാന്‍</p>
+            <p><span class="hightlight">Ctrl</span> + <span class="hightlight">X</span> - സെലക്‌റ്റ് ചെയ്ത ടെക്സ്റ്റ് കട്ട് ചെയ്യാന്‍</p>
+            <p><span class="hightlight">Ctrl</span> + <span class="hightlight">V</span> - ക്ലിപ്ബോര്‍ഡിലുള്ള ടെക്സ്റ്റ് പേസ്റ്റ് ചെയ്യാന്‍</p>
+                 <p><span class="hightlight">Ctrl</span> + <span class="hightlight">+</span> - ടെക്സ്റ്റ് ഫോണ്ട് സൈസ് വലുതാക്കാന്‍</p>
+                 <p><span class="hightlight">Ctrl</span> + <span class="hightlight">-</span> - ടെക്സ്റ്റ് ഫോണ്ട് സൈസ് ചെറുതാക്കാന്‍</p>
+                    </div>  
+            <br/>
+                
+                 <h2>Special Codes</h2>
+                 <p><span class="hightlight">Alt</span> + <span class="hightlight">S</span> - ﷺ - സ്വല്ലല്ലാഹു അലൈഹി വസല്ലം</p> 
+                 <p><span class="hightlight">Alt</span> + <span class="hightlight">R</span> - ₹ - ഇന്ത്യന്‍ രൂപയുടെ ചിഹ്നം</p> 
+                 <p><span class="hightlight">Alt</span> + <span class="hightlight">Y</span> - € - യൂറോ കറന്‍സി ചിഹ്നം</p> 
+                 <p><span class="hightlight">Alt</span> + <span class="hightlight">G</span> - © - കോപിറൈറ്റ് ചിഹ്നം</p> 
+                 <p><span class="hightlight">Alt</span> + <span class="hightlight">T</span> - ™ - ട്രേഡ് മാര്‍ക്ക് ചിഹ്നം</p> 
+                 <p><span class="hightlight">Alt</span> + <span class="hightlight">D</span> - ® - രെജിസ്റ്റേര്‍ഡ് ചിഹ്നം</p> 
+                 
+                 
+                 
+                <div class="ourlinks">
+                <p>malayalam-addon.blogspot.in || facebook.com/malayalajaalakam </p>
+                
+                </div>    
+                <div style="text-align: center">
+                </div>
+            </div>
+            
+        </body>
+        <script>
+        
+        var phoBut = document.getElementById('Pho')
+        var InsBut = document.getElementById('Ins')
+        var ASCBut = document.getElementById('ASC')
+        var AraPhoBut = document.getElementById('ArabicPho')
+        var Ara101But = document.getElementById('Arabic101')
+        
+        var phokeyboard = document.getElementById('PhoKeyboard')
+        var inskeyboard = document.getElementById('InsKeyboard')
+        var asckeyboard = document.getElementById('ASCKeyboard')
+        var ArabicPhoKeyboard = document.getElementById('ArabicPhoKeyboard')
+        var Arabic101Keyboard = document.getElementById('Arabic101Keyboard')
+        
+        var buttonArray = [ phoBut, InsBut, ASCBut, AraPhoBut, Ara101But]
+        var keyboardArray = [ phokeyboard, inskeyboard, asckeyboard, ArabicPhoKeyboard, Arabic101Keyboard ]
+        
+        function showMyKeyboard(but, keyboard){
+            console.log('show My keyboard')
+            for(i=0; i< buttonArray.length; i++){
+                buttonArray[i].classList.remove('activeKeyboard')
+                buttonArray[i].classList.add('disabledKeyboard')
+            }
+            for(i=0; i< keyboardArray.length; i++){
+                keyboardArray[i].style.display = 'none'
+            }
+            but.classList.remove('disabledKeyboard')
+            but.classList.add('activeKeyboard')
+            keyboard.style.display = 'block'
+        }
+        
+        function showphoData(){
+            showMyKeyboard(phoBut, phokeyboard)
+
+        }
+        function showinsData(){
+            showMyKeyboard(InsBut, inskeyboard)
+            
+        }
+        function showascData(){
+            showMyKeyboard(ASCBut, asckeyboard)
+   
+        }
+        function showArabicPhoData(){
+            showMyKeyboard(AraPhoBut, ArabicPhoKeyboard)
+
+        }
+        function showArabic101Data(){
+            showMyKeyboard(Ara101But, Arabic101Keyboard)
+
+        }
+        </script>
+
+    </html>

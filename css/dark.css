@@ -1,0 +1,282 @@
+:root{
+    --bar-color : #2f2e33;
+    --bar-font-color : #ccc;
+    --bottom-color : #ffc107;
+    --bottom-font-color: #000;
+    --textarea-bg-color: #28272c;
+    --textarea-color: #2f2e33;
+    --textarea-font-color: #ddd;
+    --border-color: rgba(0, 0, 0, 0.42);
+    --scrollbar-color: #444;
+    --overlay-color: #000;
+    --box-shadow : rgba(0, 0, 0, 0.5);
+    --input-color: #222;
+    --input-font-color: #eee;
+    --emoji-board-color : #ffeb3b;
+    --emoji-font-color: black;
+    --emoji-tile-hover: #cddc39;
+    --highlight-color: #003bda;
+    --focused-color: #E91E63;
+    --engtext-color: #ffc107;
+    --grid-light: #2f2e33;
+    --grid-dark: #1e1e21;
+    --mal-letter: #cddc39;
+    --eng-letter: rgb(255, 246, 246);
+    --key-border: rgba(0, 0, 0, 0.25);
+}
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--bottom-color);
+}
+body{
+    background-color: var(--textarea-bg-color);
+    border-right:1px solid var(--bottom-color);
+    border-left:1px solid var(--bottom-color);
+    border-bottom:1px solid var(--bottom-color);
+    border-top:none;
+}
+
+/*title bars here*/
+#title-bar, #sideBar {
+    background-color: var(--bar-color);
+    color: var(--bar-font-color);
+    border: 0px solid var(--input-color);
+}
+#bottom{
+    background-color: var(--bottom-color);
+    color: var(--bottom-font-color);
+}
+#title-bar-btns > div, #title-mini-bar>i {
+    background-color: var(--bar-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 030px;
+    
+}
+#title-bar-btns > div {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+#title-mini-bar>i {
+    font-size: 15px;
+}
+#topBarOptions> div:hover {
+    color: var(--bottom-color)
+}
+#topBarIconButtons>i:hover, #topBarAlignIcons>i:hover, #sideBar>i:hover, #title-bar-btns > div:hover,#title-mini-bar>i:hover,  #title-medium-bar>i:hover, .langBtn:hover
+{
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    box-shadow: inset 0px 2px 3px rgba(214, 214, 214, 0.25);
+    color: var(--bottom-color);
+}
+#searchBar>i:hover,#topBarIconButtons>i:active, #topBarAlignIcons>i:active, #sideBar>i:active,
+#searchBar>i:active, #title-bar-btns > div:active,#title-medium-bar>i:active{
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    box-shadow: inset 0px 0px 5px 1px rgba(255, 255, 255, 0.64);
+    background-color: var(--bottom-color);
+    color: var(--bottom-font-color);
+}
+/*Buttons here*/
+button {
+    background-color: var(--bar-color);
+    color: var(--bar-font-color);
+    border: 1px solid var(--input-color);
+}
+
+/*DialogBoxes here*/
+#dialogBoxHead, #dialogBoxBottom, #findBoxHeader, #findReplaceBottom, .findBoxBtn, #confirmBoxHead, #confirmBoxBottom {
+    background-color: var(--bar-color);
+    color: var(--bar-font-color);
+    border: 1px solid var(--input-color);
+}
+
+#findReplaceBox {
+    background-color: var(--textarea-bg-color);
+    color: var(--bar-font-color);
+}
+#dialogOverlay {
+    background-color: var(--overlay-color);
+}
+input{
+    background-color: var(--input-color);
+    color: var(--input-font-color);
+    border: none
+}
+#middleBar, #dialogBoxBody, #confirmBoxBody{
+    background-color: var(--textarea-bg-color);
+    color: var(--textarea-font-color);
+    box-shadow: inset 0px 0px 14px rgba(0, 0, 0, 0.33);
+    border: 1px solid var(--border-color);
+}
+
+#ta{
+    background-color: transparent;
+/*    background-color: var(--textarea-color);*/
+    color: var(--textarea-font-color);
+    border: none;
+}
+.fa-angle-down, .fa-toggle-off,.fa-toggle-on{
+    color: var(--bottom-color);
+}
+
+.fa-paint-brush {
+    color: var(--bar-font-color);
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 16px 5px var(--boxshadow)
+
+}
+/*Context Menus*/
+.context-menu {
+    background-color: var(--textarea-bg-color);
+    color: var(--bar-font-color);
+    border: 1px solid var(--bottom-color);
+    box-shadow: 1px 1px 3px 0 var(--box-shadow);
+}
+.separator {
+    background-color: var(--scrollbar-color);
+}
+.context-menu ul li:hover{
+/*    background: var(--bottom-color);*/
+/*    border-left: 25px solid transparent;*/
+    color: var(--bottom-color);
+    font-weight: bold;
+/*    font-size: 15px;*/
+}
+.context-menu ul li:active{
+    background: var(--bottom-color);
+    color: var(--bottom-font-color);
+}
+
+
+
+
+
+
+.active{
+    color: var(--bottom-color);
+}.pop-flex-container > div >i {
+    margin-right: 5px;
+}
+.pop-flex-container > div:hover, .findBoxBtn:hover, #findBoxRightSide > p:hover, button:hover{
+    color: var(--bottom-color)
+}
+.pop-flex-container > div:active, .findBoxBtn:active{
+    background-color: var(--bottom-color);
+    color: var(--bottom-font-color)
+}
+
+#findReplaceStatus {
+    color: var(--bottom-color)
+}
+
+#findBoxRightSide > p {
+    background-color: var(--bar-color);
+    box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.5);
+}
+#findBoxRightSide > p:visited {
+    background-color: var(--bottom-color);
+    color: var(--bottom-color);
+    box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.5);
+}
+.searchCloseBtn {
+    background-color: var(--bar-color);
+    color: var(--bar-font-color);
+}
+
+mark{
+    background-color: #1a3fba;
+    color: transparent
+}
+/*  EMOJI BOARD  */
+#emojiContainer{
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6)
+
+}
+
+#emojiTitles >div{
+/*    box-shadow: inset 0px 0px 1px 0px rgba(0, 0, 0, 0.6);*/
+}
+mark{
+    background-color: var(--highlight-color);
+    color: transparent
+}
+#emojiTitles >div:hover{
+    background-color: var(--emoji-tile-hover)
+
+}
+
+#emojiBoard{
+    background-color: var(--emoji-board-color);
+    color: var(--emoji-font-color);
+}
+
+#emojiBoard >div:hover{
+    background-color: #fff;
+}
+
+#emojiButtonBar{
+    color: var(--bottom-font-color);
+    background-color: var(--bottom-color);
+}
+.emojiActiveTile{
+    background-color: var(--emoji-board-color);
+}
+.emojiDisabledTile{
+    background-color: var(--textarea-color)
+}
+
+#title-mini-bar {
+    color: var(--bar-font-color);
+    background: var(--bar-color);
+}
+
+#searchDetail {
+    margin-top: 10px;
+    color: var(--bottom-color);
+}
+.blueCap{
+    background-color: var(--highlight-color);
+}
+.orangeCap{
+    background-color: var(--focused-color);
+}
+#searchBoxMenu {
+    background-color: var(--bar-color);
+    border-top: 1px solid var(--border-color);
+}
+.engText{
+    color: var(--engtext-color)
+}
+
+.grid-new-container{
+   color: white; 
+    border: 1px solid var(--textarea-color);
+}
+.gridDark{
+    background: var(--box-shadow)
+}
+.gridLight{
+    background: var(--textarea-bg-color);
+}
+.malLetter{
+    color: var(--emoji-board-color);
+}
+/*
+#TopSearchNextBtn:focus, #TopSearchPreBtn:focus, #TopSearchCloseBtn:focus, .findBoxBtn:focus, .mjButton:focus, {
+    border: 1px solid var(--bottom-color);
+}*/
+.tabGuy:focus{
+    border: 1px solid var(--bottom-color);
+}
+.activeLangBtn{
+    box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+    color: var(--bottom-color);
+}
+#langMedButton {
+    color: var(--bottom-color)
+}

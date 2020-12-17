@@ -1,0 +1,4 @@
+Automatically finding and replacing english words with english texts
+Suggestions and autocorrections of typing words in Malayalam.
+English word correction
+Possibility to move the entire textarea to a rich text editor

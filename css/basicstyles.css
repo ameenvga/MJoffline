@@ -1,0 +1,1062 @@
+    
+::-webkit-scrollbar
+{
+	width: 10px;
+}
+::-webkit-scrollbar-thumb
+{
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 0px rgba(0,0,0,.3);
+}
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0); }
+::-webkit-resizer {
+    background: rgba(0, 0, 0, 0);
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+ html,body,#wrapper {
+    padding:0;
+    margin:0;   
+    max-width: 100%;
+}
+html{
+    height: 100%;
+}
+body {
+    user-select: none;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    font-family: ubuntu, symbola;
+}
+button{
+    outline: none;
+    user-select: none;
+    border: none;
+    font-size: 16px;
+}
+img{
+    user-select: none;
+}
+#appBanner{
+    position: fixed;
+    display: flex;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(240, 240, 240, 1);
+    width: 100%;
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+    box-shadow: inset 2px 1px 200px 0px rgba(138, 152, 199, 0.53);
+}
+#recentFileBox{
+    width: 500px;
+    height: 200px;
+/*    background: #ff0;*/
+    padding: 0 30px;
+}
+#bannerImage{
+    justify-content: center;
+    line-height: 100vh;
+    text-align: center;
+}
+
+#appIcon{
+/*    -webkit-app-region: drag;*/
+    padding: 0px;
+    width: 61px;
+    height: 60px;
+    position: absolute;
+    left: -1px;
+    top: 0;
+    z-index: 20;
+} 
+#title-bar {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0px;
+    right: 0;
+    height: 60px; 
+    padding: 0px;
+    padding-left: 60px;
+    margin: 0px; 
+    font-family: ubuntu;
+}
+#title-bar-btns {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    top: 0px;
+    right: 1px; 
+    z-index: 30;
+    display: flex;
+    flex-direction: row;
+    width: 90px;
+    height: 30px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--bar-color)
+}
+#sideBar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    padding-top: 60px;
+    width: 60px;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#sideBar>i{
+    padding: 5px;
+    margin: 10px 0px;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+#wrapper {
+    position:relative;
+}
+#searchBar>i, #topBarIconButtons>i,#topBarAlignIcons>i {
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    
+}
+#topBarOptions{
+    display: flex;
+    white-space: nowrap;
+/*    padding-left: 80px;*/
+    line-height: 60px;
+    justify-content: flex-start;
+    align-items: center;
+}
+#topBarOptions> div, #topBarOptions> collection{
+/*    width: 10%;*/
+    overflow: hidden
+}
+#topBarOptions>div, #topBarOptions>collection, #topBarOptions>i{
+    margin-left:25px;
+    display: flex;
+    cursor: default;
+    user-select: none;
+}
+#ta, #backdrop {
+    overflow-y: scroll ;
+    font-family: notoSans,notoArabic,asap,symbola;
+    font-size: inherit;
+    text-align: left;
+    width: 100%;
+    bottom: 0px;
+    top: 0px;
+    padding:7% 8%;
+/*    unicode-bidi: bidi-overrideb;*/
+/*    margin-left: 15%;*/
+}
+.arabicOn{
+    direction: rtl;
+    unicode-bidi: bidi-overrideb
+/*    text-align: right;*/
+}
+#ta,#bottom,#backdrop{
+    position: absolute;
+}
+#tb, #tc {
+    display: none;
+}
+#bottom {
+    display: flex;
+    justify-content: space-between;
+    bottom:0;
+    height:28px;
+    left: 0;
+    right: 0;
+    text-align: left;
+    padding-top: 8px;
+    font-size: 12px;
+    font-family: 'ubuntu';
+    padding-left: 60px;
+    padding-right: 60px;
+    z-index: 32;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+}
+textarea, #backdrop { 
+/*
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    -ms-box-sizing: border-box; 
+*/
+    box-sizing: border-box; 
+    overflow-x: hidden; 
+}
+textarea:focus {
+  outline: none;
+/*  -webkit-box-shadow: none !important;*/
+/*  -moz-box-shadow: none !important;*/
+  box-shadow: none !important;
+}
+
+#dialogOverlay{
+    display: none;
+    opacity: 0.8;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 40;
+    height: 100%;
+    width: 100%;
+}
+#dialogBox{
+    display: none;
+    position: fixed;
+    z-index: 45;
+    text-align: center;
+    height: 80%;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    top: 10%;
+    bottom: 10%;
+        
+}
+
+#dialogBoxHead, #findBoxHeader, #confirmBoxHead{
+    text-align: center;
+    font-size: 18px;
+    line-height: 50px;
+    font-family: 'ubuntu';
+    height: 50px;
+}
+#dialogBoxBody{
+    font-size: 25px;
+    padding: 10px 20px;
+    margin: 0px;
+    
+    text-align: left;
+    outline: none;
+    box-shadow: none !important;
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+}
+.fmlFontClass{
+    font-family: 'indulekha',symbola, notoArabic;
+}
+.mlkvFontClass{
+    font-family: nihal,symbola;
+}
+.mlFontClass{
+    font-family: mlindulekha,symbola;
+}
+#dialogBoxBottom, #findReplaceBottom, #confirmBoxBottom{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+}
+.pop-flex-container {
+    display: flex;
+    justify-content: center;   
+    font-family: 'ubuntu';
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+}
+.pop-flex-container > div,.pop-flex-container > button {
+    display: flex;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    user-select: none;
+    justify-content: center;
+    }
+.pop-flex-container > button >i{
+    margin-right: 5px;
+}
+/* CONTXT MENU CSS*/
+.context-menu{
+    width: 225px;
+    height: auto;
+    position: absolute;
+    display: none;
+    z-index: 35;
+    font-family: ubuntu;
+    font-size: 14px;
+/*    padding: 1em;*/
+}
+.context-menu ul{
+    list-style: none;
+    padding: 2px 0px 2px 0px;
+    margin: 0px;
+}
+.context-menu ul li:not(.separator){
+    padding: 5px 21px 10px 21px;
+    cursor: pointer;
+}
+.separator{
+    height: 1px;
+    margin: 2px 0px 2px 0px;
+}
+/* CONTXT MENU CSS END*/
+
+#menuBox,#convertBoxMenu,#keyboardBoxMenu,#findReplaceBox,#dialogOverlay,#dialogBox,#confirmBox {
+    display: none;
+}
+.engText{
+    font-family: 'ubuntuCondensed';
+    font-size: 22px;
+}
+.optionsMenu {
+    width: 200px;
+    height: auto;
+    top: 90px;
+    right: 10px;
+    position: absolute;
+
+    z-index: 100;
+    font-size: 14px;
+}
+.typingField{
+    font-family:notoSans,notoArabic,asap,symbola;
+}
+#middleBar {
+    display: flex;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    bottom: 0px;
+    right: 0;
+}
+#findReplaceBox{
+    position: absolute;
+    width: 80%;
+    right:10%;
+    top: 10%;
+    height: 70%;
+    z-index: 50
+}
+.findBoxElements{
+    user-select: none;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    white-space: normal;
+    overflow: hidden;
+}
+.findBoxlblbtns{
+    width: 20%;
+    cursor: default;
+}
+input{
+    font-size: 1.1em;
+    width: 50%;
+    line-height: 40px;
+    padding-left: 10px;
+    outline: none;
+}
+.topBarIcons {
+    font-size: 22px;
+}
+#topBarIconButtons>i {
+    margin-left: 8px;
+}
+.fa-angle-down, .iconButnAdj {
+    font-size: 20px;
+    line-height: 60px;
+    padding-left: 5px;
+}
+
+#dragBar {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    z-index: 25;
+    -webkit-app-region: drag;
+}
+
+#findBoxBody {
+    width: 70%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+}
+#findBoxBody> div{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row
+}
+#confirmBox{
+    display: none;
+    position: fixed;
+    z-index: 60;
+    width: 50%;
+    top: 20%;
+    left: 25%;
+    bottom: 50%;
+    text-align: center;
+        
+}
+#confirmBoxBody{
+/*    background-color: white;*/
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0px;
+    font-family: 'ubuntu';
+    outline: none;
+    box-shadow: none !important;
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+/*
+#confirmBoxBottom{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+}
+*/
+
+#themeButton {
+    width: 40px;
+    height: 40px;
+}
+#searchBar {
+    align-items: center;
+}
+#searchBar>div, #searchBar>i{
+    margin-left: 15px;
+}
+#findReplaceStatus {
+    padding-left: 10px;
+    padding-top: 43px;
+}
+#searchBoxMenu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    bottom: 29px;
+    justify-content: center;
+    left: 1px;
+    right: 1px;
+    height: 86px;
+    z-index: 14;
+    padding: 10px 60px;
+}
+
+#searchBoxMenu >div{
+    text-align: center;
+}
+#keyboardSelect {
+    width: 160px;
+}
+#buttonTitle {
+    text-align: right;
+    width: 140px;
+}
+#appTitle {
+    font-size: 16px;
+    height: inherit;
+    line-height: 10px;
+}
+#findBoxMain {
+        display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 50px;
+    top: 50px;
+    right: 0px;
+    left: 0;
+}
+#findBoxRightSide {
+    width: 30%;
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    right: 0px;;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-family: notoSans
+}
+#findBoxRightSide> p {
+    padding: 5px;
+    margin: 4px;
+    cursor: w-resize;
+    font-size: 16px;
+    overflow-x: hidden;
+    font-family: notoSans, asap;
+}
+#backdrop{
+
+    background-color: var(--textarea-color);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    pointer-events: none;
+    white-space: pre-wrap;
+	word-wrap: break-word;
+	color: transparent;
+}
+#ta{
+    z-index: 2;
+}
+#fakeTextArea {
+    margin-left: 15%;
+    font-size: 20px;
+    position: absolute;
+    top: 0px;
+    bottom: 30px;
+    width: 70%;
+    
+}
+/*  EMOJI BOARD  */
+#emojiContainer{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 3%;
+    background: var(--bottom-color);
+    top: 108px;
+    left: 75%;
+    bottom: 10%;
+    z-index: 3;
+
+}
+#emojiTitles{
+    display: flex;
+    flex-direction: row;
+/*    flex-wrap: wrap;*/
+}
+#emojiTitles >div{
+    width: 100%;
+    height: 33px;
+    border: 1px solid var(--emoji-board-color);
+}
+#emojiTitles >div:hover{
+/*    background-color: crimson*/
+
+}
+#emojiBoard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+/*    background-color: aliceblue;*/
+    position: absolute;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    bottom: 30px;
+    padding-bottom: 10px;
+    top: 32px;
+/*    color: black;*/
+    font-family: symbola;
+}
+#emojiBoard >div{
+    width: 40px;
+    height: 40px;
+    font-size: 35px;
+    margin: 1px;
+    cursor: pointer;
+}
+#emojiBoard >div:hover{
+/*    background-color: #ddd*/
+}
+#emojiButtonBar{
+    position: absolute;
+    top: -26px;
+    font-size: 14px;
+    right: 0;
+    left: 0;
+    line-height: 30px;
+    height: 30px;
+    padding-right: 10px;
+    text-align: right;
+    cursor: default;
+}
+#title-mini-bar {
+    height: 30px;
+    padding-left: 30px;
+    padding-right: 90px;
+    display: flex;
+    align-items: center;
+    line-height: 30px;
+    justify-content: space-between;
+    
+}
+#title-medium-bar{
+        display: none;
+        
+    }
+#aboutBox {
+    position: absolute;
+    z-index: 150;
+    width: 600px;
+    top: 50%;
+    height: 300px;
+    margin-top: -150px;
+    margin-left: -300px;
+    left: 50%;
+    background-color: rgba(232, 232, 232, 0);
+    justify-content: center;
+    display: none;
+    flex-direction: column;
+    /* overflow: scroll; */
+    align-items: center;
+}
+#aboutBox>div{
+    flex-direction: column;
+    display: flex;
+    border: 6px solid #fff;
+    background-color: rgba(232,232,232,1);
+    align-items: center;
+}
+
+@media only screen and (max-width: 1200px) {
+    #title-medium-bar{
+        display: flex;
+        font-size: 20px;
+        background-color: var(--bar-color);
+        height: 60px;
+        color: var(--bar-font-color);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-right: 90px;
+        padding-left: 60px;
+    }
+    #title-medium-bar>i, #sideBar>i {
+            padding: 10px;
+            border: 1px solid var(--bar-color);
+    }
+    #title-bar{
+         display: none;
+     }
+    #title-mini-bar{
+        display: none
+    }
+    #fakeTextArea {
+        margin-left: 10%;
+        font-size: 20px;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 800px) {
+    
+}
+@media only screen and (max-width: 700px) {
+     
+     body {
+        background-color: lightblue;
+     }
+  
+     #dragBar{
+         display: none;
+     }
+     #title-bar{
+         display: none;
+     }
+     #title-mini-bar{
+        display: flex
+    }
+
+     #title-medium-bar{
+        display: none;
+    }
+     #sideBar{
+        display: none;
+     }
+     #middleBar{
+         left: 0px;
+         right: 1px;
+         top: 30px;
+         padding: 2%;
+         margin: 0px;
+         width: 100%;
+     }
+     #fakeTextArea{
+         border-top: 1px solid var(--box-shadow);
+        left: 0px;
+        position: absolute;
+        width: 100%;
+        right: 0px;
+        margin-left: 0px;
+        top: 0;
+     }
+     #ta, #backdrop {
+         top: 0px;
+         padding: 10px;
+         margin-left: 0;
+         width: 100%;
+     }
+     #appIcon{
+         width: 30px;
+         height: auto
+     }
+     
+}
+@media print{
+    #sideBar, #title-bar,#bottom, #title-mini-bar, #title-medium-bar, #title-bar-btns, #dragBar,#appIcon,#menuBox{
+        display: none
+    }
+    body, html,#ta,#fakeTextArea{
+       border: none;
+       height: 100%;
+       width: 100%;
+	   margin: 0; padding: 0;
+	   background: none;
+    }
+    #ta{
+        display: block;
+        color: black;
+    }
+    #fakeTextArea{
+        margin-left: 0px;
+    }
+    #backdrop{
+        display: none
+    }
+    
+}
+
+
+#TopSearchBox {
+    height: 40px;
+}
+
+#searchHouse {
+    display: flex;
+    flex-direction: row;
+}
+
+#searchDetail {
+    font-size: 15px;
+}
+
+#InsKeyBoardBox {
+    font-family: notoSans, ubuntu;
+    display: none;
+    width: 100%;
+    max-height: 50%;
+    border-top: 1px solid var(--border-color);
+    padding-top: 3px;
+    padding-left: 60px;
+    padding-right: 10px;
+    z-index: 20;
+    align-items: flex-start;
+    flex-direction: row;
+    background: var(--grid-dark);
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    flex-wrap: wrap;
+    right: 0;
+    overflow-y: scroll;
+    user-select: none;
+    cursor: default;
+}
+#trackElement{
+    width:0px;
+    height: 0px;
+/*
+    width: 50px;
+    height: 50px;
+    background: red;
+*/
+}
+.grid-new-container{
+    display: flex;
+    flex-direction: column;
+    font-family: asap, notoSans;
+    width: 50px;
+    height: 45px;
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 2px;
+    text-align: center;
+}
+.grid-arabic-container {
+    display: flex;
+    flex-direction: column;
+    font-family: notoArabic, asap;
+    width: 60px;
+    height: 60px;
+    font-size: 16px;
+    border-radius: 3px;
+    padding: 2px;
+    text-align: center;
+}
+.malLetter{
+    font-size: 16px;
+    padding-top: 3px;
+    height: 25px;
+    line-height: 15px;
+}
+.araLetter{
+    font-size: 25px;
+    padding-top: 3px;
+    height: 25px;
+    line-height: 15px;
+    color: var(--mal-letter);
+}
+/*CSS of keyboards*/
+.grid-new-container,.grid-arabic-container {
+   color: var(--eng-letter);
+   border: 1px solid var(--key-border);
+}
+.gridDark{
+    background: var(--grid-dark)
+}
+.gridLight{
+    background: var(--grid-light);
+}
+.malLetter{
+    color: var(--mal-letter);
+}
+
+.mjButton{
+    width: 100%;
+}
+#aboutBoxLogo {
+    width: 500px;
+    margin-top: 30px;
+    margin-left: -85px;
+}
+.keyCloseBtn{
+    position: absolute;
+    left: 25px;
+    top: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+#planeAnimBox {
+    position: absolute;
+    bottom: 50px;
+    right: -100vw;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+}
+
+#planeBanner {
+    background: #eeff79;
+    color: #010800;
+    font-size: 25px;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    padding: 3px 18px;
+    margin-left: -16px;
+}
+
+#bannerTitle {
+    font-size: 25px;
+    /* padding-left: 10px; */
+    letter-spacing: 10px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+#bannerDesc {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+li {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#planeAnimBox {
+    display: none
+}
+.fmlEngText{
+    font-family: 'ubuntuCondensed';
+    font-size: 22px;
+    background: red;
+    color: white;
+    border: 3px solid #9b29ff;
+    padding: 2px;
+}
+.contextmenutext{
+    padding-left: 10px;
+}
+.contextmenutext2{
+    padding-left: 25px;
+}
+.langBtn{
+    box-shadow: inset 0px 2px 3px 0px rgba(255, 255, 255, 0.25);
+}
+.langBtnCommon{
+    border: 1px solid rgba(0, 0, 0, 0.34);
+    height: 30px;
+    line-height: 20px;
+    font-size: 15px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#langEnBtn{
+    border-radius: 5px 0px 0px 5px;
+}
+#langMlBtn{
+    border-right: none;
+    border-left: none;
+}
+#langArBtn{
+    border-radius: 0px 5px 5px 0px;
+}
+.convertFMLButton{
+    display: flex;
+    justify-content: space-between;
+}
+#bottomInformations {
+    display: flex;
+}
+#bottomInformations >div{
+    margin-left: 15px;
+    
+}
+
+/*DUA ARABIC WEBFRAME*/
+#webFrame{
+    position: absolute;
+    top: 60px;
+    left: 61px;
+    bottom: 28px;
+    right: -1px;
+    background: white;
+    z-index: 19;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1%;
+    background: var(--textarea-color);
+}
+#webFrame>textarea{
+    width: 80%;
+    height: 25%;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-family: notoSans, notoArabic, asap;
+    resize: vertical;
+}
+#buttonWebFrame{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: 81%;
+    display: flex;
+    flex-direction: column;
+}
+#buttonWebFrame>button{
+    width: 90%;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+#buttonWebFrame>button:active{
+    color: white;
+    background: black;
+}
+#duaarabic{
+    direction: rtl;
+    text-align: right;
+    font-size: 25px;
+}
+#duamalayalam,#duaenglish,#duadetails{
+    font-size: 20px;
+}
+
+#RecentFileBox{
+    text-align: left;
+    height: 63vh;
+    width: 40vw;
+
+}
+.fileDetailTitle {
+    display: flex;
+    align-items: center
+}
+.fileDetailIcon{
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.fileDetailText{
+    font-size: 15px;
+    font-weight: bold;
+    color: #a86515;
+    margin-top: 10px;
+}
+.recentFileSingle{
+    font-size: 13px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    margin-top: 5px;
+    word-break: break-all;
+}
+.filenameText{
+    font-size: 15px;
+    font-weight: bold
+}
+
+.CreateOpenDiv {
+    display: flex;
+    font-size: 13px;
+    font-family: ubuntu, notoSans;
+}
+
+.CreateOpenButton {
+    display: flex;
+    background: #fff;
+    border-radius: 5px;
+    width: 50%;
+    align-items: center;
+    margin-right: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+#recentFileDiv {
+    overflow-y: scroll;
+    height: 60vh;
+    overflow-x: hidden;
+}
+
+#firstCol {
+    width: 50vw;
+    height: 100vh;
+/*    background: #ff0;*/
+}
+
+#secondCol {
+    width: 50vw;
+    height: 100vh;
+/*    background: #e4f;*/
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

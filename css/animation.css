@@ -1,0 +1,35 @@
+/*
+@keyframes sendIn {
+    from {bottom: -86px;}
+    to {bottom: 29px;}
+}
+
+@keyframes sendOut {
+    from {bottom: 29px;}
+    to {bottom: -86px;}
+}
+
+
+#searchBoxMenu.showSearch{
+    animation-name: sendIn;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+}
+
+#searchBoxMenu.closeSearch{
+    animation-name: sendOut;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+}
+*/
+
+@keyframes comeIn {
+    from {right: -800px;}
+    to {right:100vw;}
+}
+#planeAnimBox.comeIn {
+    animation-name: comeIn;
+    animation-duration: 15s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}

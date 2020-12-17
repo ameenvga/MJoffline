@@ -1,0 +1,277 @@
+
+
+:root{
+    --bar-color: #075e54;
+    --bar-font-color: #fff;
+    --bottom-color: #25D366;
+    --bottom-font-color: #000;
+    --textarea-bg-color: #128c7e;
+    --textarea-color: #DCF8C6;
+    --textarea-font-color: #000;
+    --overlay-color: #000;
+    --box-shadow: rgba(45, 93, 165, 0.5);
+    --input-color: #DCF8C6;
+    --border-color: #24887c;
+    --input-font-color: #000;
+    --emoji-board-color:#eafdd5;
+    --emoji-font-color: black;
+    --emoji-tile-hover: #f6ff73;
+    --context-color: #fefffb;
+    --context-font-color: #000;
+    --font-hover-color: #fff;
+    --menu-hover-color: #ffffff;
+    --engtext-color: #E91E63;
+    --desc-color: #000;
+    --highlight-color: #64cfff;
+    --focused-color: #ff1c6a;
+    --grid-light: #2f2e33;
+    --grid-dark: #1e1e21;
+    --mal-letter: #cddc39;
+    --eng-letter: rgb(255, 246, 246);
+    --key-border: rgba(0, 0, 0, 0.25);
+}
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--bottom-color);
+}
+body{
+    background-color: var(--textarea-bg-color);
+    border-right:1px solid var(--bottom-color);
+    border-left:1px solid var(--bottom-color);
+    border-bottom:1px solid var(--bottom-color);
+    border-top:none;
+}
+
+/*title bars here*/
+#title-bar, #sideBar {
+    background-color: var(--bar-color);
+    color: var(--bar-font-color);
+}
+#bottom{
+    background-color: var(--bottom-color);
+    color: var(--bottom-font-color);
+}
+#title-bar-btns > div, #title-mini-bar>i {
+    background-color: var(--bar-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 030px;
+    
+}
+#title-bar-btns > div {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+#title-mini-bar>i {
+    font-size: 15px;
+}
+#topBarOptions> div:hover {
+    color: var(--menu-hover-color)
+}
+#searchBar>i:hover,#topBarIconButtons>i:hover, #topBarAlignIcons>i:hover, #sideBar>i:hover, #title-bar-btns > div:hover,#title-mini-bar>i:hover,  #title-medium-bar>i:hover, .langBtn:hover
+{
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    box-shadow: inset 0px 2px 3px rgba(214, 214, 214, 0.25);
+    color: var(--menu-hover-color);
+}
+#topBarIconButtons>i:active, #topBarAlignIcons>i:active, #sideBar>i:active,
+#searchBar>i:active, #title-bar-btns > div:active,#title-medium-bar>i:active{
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    box-shadow: inset 0px 0px 5px 1px rgba(255, 255, 255, 0.64);
+    background-color: var(--bottom-color);
+    color: var(--bar-font-color);
+}
+/*Buttons here*/
+button {
+    background-color: var(--bar-color);
+    color: var(--bar-font-color);
+    border: 1px solid var(--input-color);
+}
+
+/*DialogBoxes here*/
+#dialogBoxHead,  #findBoxHeader,  .findBoxBtn, #confirmBoxHead {
+    background-color: var(--bar-color);
+    color: var(--bar-font-color);
+    border: 1px solid var(--border-color);
+    
+}
+#dialogBoxBottom, #confirmBoxBottom, #findReplaceBottom{
+    background-color: var(--bottom-color);
+    color: var(--bottom-font-color);
+    
+}
+#findReplaceBox {
+    background-color: var(--textarea-bg-color);
+    color: var(--bar-font-color);
+}
+#dialogOverlay {
+    background-color: var(--overlay-color);
+}
+input{
+    background-color: var(--input-color);
+    color: var(--input-font-color);
+    border: 1px solid var(--border-color)
+}
+#dialogBoxBody, #confirmBoxBody{
+    background-color: var(--textarea-color);
+    color: var(--textarea-font-color);
+    box-shadow: inset 0px 0px 14px rgba(0, 0, 0, 0.33)
+}
+#middleBar{
+    background-color: var(--textarea-bg-color);
+    box-shadow: inset 0px 0px 14px rgba(0, 0, 0, 0.33)
+}
+#ta{
+    background-color: transparent;
+/*    background-color: var(--textarea-color);*/
+    color: var(--textarea-font-color);
+    border: none;
+}
+.fa-angle-down, .fa-toggle-off,.fa-toggle-on{
+    color: var(--menu-hover-color);
+}
+
+.fa-paint-brush {
+    color: var(--bottom-color);
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 16px 5px rgba(0, 0, 0, 0.46)
+
+}
+/*Context Menus*/
+.context-menu {
+    background-color: var(--context-color);
+    color: var(--context-font-color);
+    border: 1px solid var(--bottom-color);
+    box-shadow: 1px 1px 3px 0 var(--box-shadow);
+}
+.separator {
+    background-color: var(--textarea-bg-color);
+}
+.context-menu ul li:hover{
+    background: var(--bottom-color);
+/*    border-left: 25px solid transparent;*/
+    color: white;
+    font-weight: bold;
+/*    font-size: 15px;*/
+}
+.context-menu ul li:active{
+    background: var(--bottom-color);
+    color: #fff;
+}
+
+.active{
+    color: var(--bottom-color);
+}
+.pop-flex-container > div >i {
+    margin-right: 5px;
+}
+.pop-flex-container > div:hover, .findBoxBtn:hover, #findBoxRightSide > p:hover, button:hover{
+    color: var(--menu-hover-color);
+    box-shadow:  inset 0px 4px 11px -4px rgba(255, 255, 255, 0.64);
+}
+.pop-flex-container > div:active, .findBoxBtn:active{
+    background-color: var(--bottom-color);
+    color: var(--bar-font-color)
+}
+
+#findReplaceStatus {
+    color: var(--desc-color)
+}
+
+#findBoxRightSide > p {
+    background-color: var(--bar-color);
+/*    box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.5);*/
+    border: 1px solid var(--border-color);
+}
+
+.searchCloseBtn {
+    background-color: var(--bar-color);
+    color: var(--bar-font-color);
+}
+
+mark{
+    background-color: var(--highlight-color);
+    color: transparent
+}
+/*  EMOJI BOARD  */
+#emojiContainer{
+/*    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6)*/
+
+}
+
+#emojiTitles >div{
+/*    box-shadow: inset 0px 0px 1px 0px rgba(0, 0, 0, 0.6);*/
+}
+#emojiTitles >div:hover{
+    background-color: var(--emoji-tile-hover)
+
+}
+
+#emojiBoard{
+    background-color: var(--emoji-board-color);
+    color: var(--emoji-font-color);
+}
+
+#emojiBoard >div:hover{
+    background-color: #fff;
+}
+
+#emojiButtonBar{
+    color: var(--bar-font-color);
+    background-color: var(--bar-color);
+}
+#emojiButtonBar:hover{
+    color: var(--menu-hover-color);
+    background-color: var(--bar-color);
+}
+#emojiButtonBar:active{
+    color: var(--bar-font-color);
+    background-color: var(--bottom-color);
+}
+.emojiActiveTile{
+    background-color: var(--emoji-board-color);
+}
+.emojiDisabledTile{
+    background-color: var(--textarea-color)
+}
+
+#title-mini-bar {
+    color: var(--bar-font-color);
+    background: var(--bar-color);
+}
+.engText{
+    color: var(--engtext-color);
+}
+
+
+#searchDetail {
+    margin-top: 10px;
+    color: var(--emoji-board-color);
+}
+.blueCap{
+    background-color: var(--highlight-color);
+}
+.orangeCap{
+    background-color: var(--focused-color);
+}
+#searchBoxMenu {
+    background-color: var(--bar-color);
+    border: 0px solid var(--input-color);
+}
+#TopSearchNextBtn:focus, #TopSearchPreBtn:focus, #TopSearchCloseBtn:focus, .findBoxBtn:focus, .mjButton:focus{
+    color: var(--bottom-color);
+    background: var(--bar-color);
+    border: 1px solid var(--bottom-color);
+}
+.tabGuy:focus{
+    border: 1px solid var(--bottom-color);
+}
+.activeLangBtn{
+    box-shadow: inset 0px 3px 5px 0px rgba(0, 0, 0, 0.25);
+    color: var(--bottom-color);
+}

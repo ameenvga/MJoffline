@@ -1,0 +1,247 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Malayala Jalakam Print Window</title>
+     <link  rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <style>
+@font-face {
+    font-family: notoSans;
+    src: url(./fonts/notosans.ttf);
+}
+@font-face {
+    font-family: notoArabic;
+    src: url(./fonts/notoArabic.ttf);
+}
+@font-face {
+    font-family: asap;
+    src: url(./fonts/notoEng.ttf);
+}
+@font-face {
+    font-family: symbola;
+    src: url(./fonts/Symbola.ttf);
+}
+@font-face {
+    font-family: ubuntu;
+    src: url(./fonts/Ubuntu-R.ttf);
+}
+        html,body{     
+            height: 100%;  
+            background: #444;
+            text-align: center;
+            justify-content: center;
+            display: flex;
+        }
+        #printTopbar{    
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            position: fixed;
+            display: block;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            background: #444;
+            z-index: 999;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        }
+        #printTopBar>i{
+            padding: 5px;padding: 10px;
+            font-size: 28px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            min-width: 30px;
+            border-radius: 1px;
+            color: #666768;
+            background: #eee;
+        }
+        button{
+            min-width: 30px;
+            height: 30px;
+        }
+        #printDataDiv{    
+            position: absolute;
+            top: 70px;
+/*            bottom: 0px;*/
+            text-align: left;
+            min-height: 1000px;
+            font-size: 18px;
+            padding: 80px;
+            width: 210mm;
+            font-family: notoSans, notoArabic, asap, symbola;
+            background: white;
+            color: black;
+            outline: none;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            
+        }
+        .BtnText{
+            font-family: ubuntu;
+            padding-left: 5px;
+            font-size: 18px;
+        }
+        .pageMarker{
+            width: 910px;
+            position: absolute;
+            height: 1px;
+            background: #555;
+            z-index: 500;
+            top: 1230px;
+        }
+        #printBottom{
+            position: fixed;
+            bottom: 0;
+            height: 30px;
+            left: 0;
+            right: 0;
+            background: #555;
+            line-height: 30px;
+            font-size: 14px;
+            font-family: ubuntu;
+            text-align: right;
+            padding-right: 15px;
+            color: white;
+            border-top: 1px solid #000;
+        }
+        @media print{
+            #printTopBar{
+                display: none;
+            }
+            #printDataDiv{
+                top: 0px
+            }
+            .pageMarker{
+                display: none
+            }
+        }
+
+
+    </style>
+   
+    </head>
+    
+    <body onload="refreshPrintData()" >
+        <div id="printTopbar">
+            <i class="fa fa-align-left" onclick="alignText('left')" aria-hidden="true"></i>
+            <i class="fa fa-align-right" onclick="alignText('right')" aria-hidden="true"></i>
+            <i class="fa fa-align-center" onclick="alignText('center')" aria-hidden="true"></i>
+            <i class="fa fa-align-justify" onclick="alignText('justify')" aria-hidden="true"></i>
+            <i class="fa fa-minus" onclick="fontMinus()" aria-hidden="true"></i>
+            <i class="fa fa-plus" onclick="fontPlus()" aria-hidden="true"></i>
+            <i class="fa fa-bold" onclick="boldFont()" aria-hidden="true"></i>
+            <i class="fa fa-print" onclick="printDoc()" aria-hidden="true"><span class="BtnText">Print</span></i>
+        </div>
+        <div id="printDataDiv" contenteditable="false"></div>
+        <div class="pageMarker"></div>
+        <div id="printBottom">
+            <div>font-size: <span id="printFontSize">0</span></div>
+        </div>
+    </body>
+      <script>
+    var printFontSize = document.getElementById('printFontSize')     
+         
+    
+    function drawPageMarkers(){// curretly not using
+        console.log('draw page markers')
+        var pageHeight = window.getComputedStyle(printDataDiv).height
+        console.log(pageHeight)
+        pageHeight = parseInt(pageHeight.replace('px', ''))
+        var nextMarkerHeight = 1230
+        while(nextMarkerHeight < pageHeight){
+            console.log('Marker on', nextMarkerHeight)
+            nextMarkerHeight = nextMarkerHeight + 1230
+            var element = document.createElement('div')
+            element.classList.add('pageMarker')
+            element.style.top = nextMarkerHeight+'px'
+            document.body.append(element)
+        }
+    }     
+         
+    function refreshPrintData(){
+        console.log('refresh Print Data')
+        console.log(localStorage.align)
+        console.log(localStorage.fontSize)
+//        console.log(localStorage.printData)
+        var printDataDiv = document.getElementById("printDataDiv"); 
+        
+        try {
+            var data = localStorage.getItem('printData')
+            printDataDiv.innerHTML = data
+        } catch (e) {
+            //Catch Statement
+            console.log('LOADING DATA FROM LOCAL STRAGE- ERROR')
+        }
+        try {
+            printDataDiv.style.textAlign = localStorage.align
+        } catch (e) {
+            //Catch Statement
+            console.log('error receiving the textAlign from local Storage')
+        }
+        try {
+            var fontsize = localStorage.fontSize
+            printDataDiv.style.fontSize = fontsize
+            printFontSize.innerHTML = fontsize
+        } catch (e) {
+            console.log('error receiving the fontSize from local Storage')
+
+        }
+        
+        //        drawPageMarkers()
+        
+    }
+    function printDoc(){
+        console.log("print Doc in printpage");    
+        window.print(); 
+        }
+     function fontPlus(){
+        var printDataDiv = document.getElementById("printDataDiv"); 
+        var curFontSize = window.getComputedStyle(printDataDiv).fontSize
+        curFontSize = parseInt(curFontSize.replace('px', ''))
+        console.log(curFontSize)
+        if(curFontSize > 100){
+            printDataDiv.style.fontSize = 100 +'px'
+
+        }else{
+            printDataDiv.style.fontSize = curFontSize + 2 +'px'
+        }
+         printFontSize.innerHTML = printDataDiv.style.fontSize
+     }
+         
+    function fontMinus(){
+        var printDataDiv = document.getElementById("printDataDiv"); 
+        var curFontSize = window.getComputedStyle(printDataDiv).fontSize
+        curFontSize = parseInt(curFontSize.replace('px', ''))
+        console.log(curFontSize)
+        if(curFontSize < 11 ){
+            printDataDiv.style.fontSize = 11 +'px'
+        }else{
+            printDataDiv.style.fontSize = curFontSize - 2 +'px'
+        }
+        printFontSize.innerHTML = printDataDiv.style.fontSize
+     }
+     function alignText(currentAlign){
+        console.log("alignText")
+        if(currentAlign == 'left'){
+            printDataDiv.style.textAlign = 'left'
+        }else if(currentAlign == 'right'){
+            printDataDiv.style.textAlign = 'right'
+        }else if(currentAlign == 'center'){
+            printDataDiv.style.textAlign = 'center'
+        }else if(currentAlign == 'justify'){
+            printDataDiv.style.textAlign = 'justify'
+        }
+
+    }
+     boldON = false
+     function boldFont(){
+         if(boldON){
+             printDataDiv.style.fontWeight = 'normal'
+             boldON = false
+         }
+         else{
+             printDataDiv.style.fontWeight = 'bold'
+             boldON = true
+         }
+     }
+
+    </script>
+</html>
