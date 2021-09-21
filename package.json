@@ -40,8 +40,9 @@
       "publisherName": "ameenvga"
     },
     "linux": {
-      "target": "deb",
-      "icon": "assets/icons/png/"
+      "target": ["deb", "AppImage"],
+      "icon": "assets/icons/png/",
+      "category": "Utility"
     }
   }
 }
