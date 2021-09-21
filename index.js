@@ -10,6 +10,9 @@ app.on('ready', () => {
       });
 
     win = new BrowserWindow({
+      webPreferences: {
+        nodeIntegration: true
+    },
         width:1080, 
         height: 600, 
         title: "മലയാള ജാലകം",
