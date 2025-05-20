@@ -1,48 +1,110 @@
 {
   "name": "malayalajalakam",
   "productName": "Malayala Jaalakam",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Unicode malayalam typing tool",
   "main": "index.js",
-  "homepage": "www.malayalam-addon.blogspot.com",
+  "homepage": "https://www.malayalam-addon.blogspot.com",
   "scripts": {
-    "build": "electron-packager . MalayalaJaalakam",
-    "start": "electron index.js",
-    "dist": "build",
-    "make-cert": "electron-builder create-self-signed-cert -p ameenvga"
+    "start": "electron .",
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux",
+    "test": "jest",
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write ."
   },
   "author": "ameen vengara <ameenvengara@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "electron-updater": "^6.1.7",
+    "electron-log": "^5.0.0-beta.16"
+  },
   "devDependencies": {
-    "asar": "^0.14.0",
-    "electron": "^22.0.0",
-    "electron-builder": "^20.13.3"
+    "asar": "^3.2.0",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.13.3",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.4"
   },
   "build": {
-    "appId": "com.blogspot.malayalam-addon",
+    "appId": "com.malayalajalakam.app",
+    "productName": "Malayala Jaalakam",
+    "copyright": "Copyright © 2025 Malayala Jaalakam",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      ".editorconfig",
+      "**/assets/**/*"
+    ],
     "mac": {
       "category": "public.app-category.productivity",
-      "target": "dmg"
+      "target": ["dmg", "zip"],
+      "icon": "assets/icons/icon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
     },
     "win": {
       "target": [
         {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        },
+        {
           "target": "portable",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
+          "arch": ["x64"]
         }
       ],
-      "certificateFile": "private/ameenvga.pfx",
-      "verifyUpdateCodeSignature": false,
-      "publisherName": "ameenvga"
+      "icon": "assets/icons/icon.ico",
+      "publisherName": "ameenvga",
+      "verifyUpdateCodeSignature": false
     },
     "linux": {
-      "target": ["deb", "AppImage"],
-      "icon": "assets/icons/png/",
-      "category": "Utility"
-    }
+      "target": ["AppImage", "deb", "rpm"],
+      "icon": "assets/icons/png/512x512.png",
+      "category": "Utility",
+      "maintainer": "ameen vengara <ameenvengara@gmail.com>"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Malayala Jaalakam"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "ameenvga",
+        "repo": "MJoffline"
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
