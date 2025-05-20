@@ -29,12 +29,39 @@ var themeCount = 0;
 var currentSavedData = '';
 var lastSession;
 
-//Electron Variables
-const remote = require('electron').remote; 
-var app = require('electron').remote;
-var dialog = app.dialog;
-var fs = require('fs');
-const electron = require('electron')
+// Electron Variables
+let remote, app, dialog, fs, electron;
+
+// Check if running in Electron
+const isElectron = typeof window !== 'undefined' && 
+                 typeof window.process === 'object' && 
+                 window.process.type === 'renderer';
+
+if (isElectron) {
+    try {
+        remote = require('electron').remote;
+        app = remote.app;
+        dialog = remote.dialog;
+        fs = require('fs');
+        electron = require('electron');
+    } catch (error) {
+        console.warn('Electron modules not available, running in browser mode');
+    }
+} else {
+    console.log('Running in browser mode - some features may be limited');
+    // Mock Electron APIs for browser
+    dialog = {
+        showOpenDialog: () => Promise.resolve({ canceled: false, filePaths: [] }),
+        showSaveDialog: () => Promise.resolve({ canceled: false, filePath: '' })
+    };
+    
+    // Mock fs for browser
+    fs = {
+        readFile: (path, encoding, callback) => callback(null, ''),
+        writeFile: (path, data, encoding, callback) => callback(null),
+        existsSync: () => false
+    };
+}
 
 //Event handlers
 var typingFileds = document.getElementsByClassName('typingField')

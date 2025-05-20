@@ -8,19 +8,18 @@
 
   <meta charset="utf-8">
    
-    <link  rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link id="pageStyle" rel="stylesheet" href="css/medium.css">
     <link rel="stylesheet" href="css/basicstyles.css">
     <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/loading.css">
     <title>Malayala Jaalakam</title>
 
+        <!-- Move scripts to the end of body to ensure DOM is loaded -->
     <script>
-        window.$ = window.jQuery = require("./js/jquery-3.3.1.min.js");
+        // Expose require to the window object for Electron
+        window.require = require;
     </script>
-
-    <script src="js/pastefrom.js"></script>
-    <script src="js/capsLock.js"></script>
-    <script src="js/emojiSession.js"></script>
    
     <script>
                 capsLock.observe(function (status) {
@@ -77,23 +76,34 @@
     
     </head>
 
-<body>   
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading Malayala Jaalakam...</div>
+    </div>   
 
-    <div id="appBanner" onclick="bannerHide()">
-<!--    <div id="appBanner" >-->asfdas
-                <div>Create </div>
+    <div id="appBanner" onclick="bannerHide(event)">
+        <div id="bannerImage" onclick="event.stopPropagation()">
+            <div style="text-align: center; margin-bottom: 20px; font-size: 24px; font-weight: bold;">Welcome to Malayala Jaalakam</div>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div onclick="createNewFile()" class="CreateOpenButton" style="cursor: pointer; padding: 10px; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; gap: 10px;">
+                    <img class="fileDetailIcon" src="assets/icons/newfile.svg"/>
+                    <div>Create New File</div>
                 </div>
 
-                <div onclick="openFile()" class="CreateOpenButton">
-                <img class="fileDetailIcon" src="assets/icons/openfile.svg"/>
-                <div>Open </div>
+                <div onclick="openFile()" class="CreateOpenButton" style="cursor: pointer; padding: 10px; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; gap: 10px;">
+                    <img class="fileDetailIcon" src="assets/icons/openfile.svg"/>
+                    <div>Open File</div>
                 </div>
                 
-                 <div onclick="recoverLastSession()" class="CreateOpenButton" style="width: 100%">
-                <img class="fileDetailIcon" src="assets/icons/recover.svg"/>
-                <div>Recover Last Session </div>
+                <div onclick="recoverLastSession()" class="CreateOpenButton" style="cursor: pointer; padding: 10px; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; gap: 10px;">
+                    <img class="fileDetailIcon" src="assets/icons/recover.svg"/>
+                    <div>Recover Last Session</div>
                 </div>
             </div>
+        </div>
+    </div>
             
             <div class="fileDetailText">Recent documents</div>
             <div id="recentFileDiv">
@@ -325,8 +335,8 @@
         <button onclick="resetWebFrame()">Reset</button>
         </div>
     </div>
-<div id="#wrapper">
-    <img alt="Malayala Jaalakam v 2.0.0" id="appIcon" src="assets/icons/appIcon.png"/>
+<div id="wrapper">
+    <img alt="Malayala Jaalakam v 2.0.0" id="appIcon" src="assets/icons/appIcon.png" onclick="toggleBanner()" style="cursor: pointer;"/>
     
     
         <div id="title-mini-bar">
@@ -411,15 +421,58 @@
             </div>
             </div>
         </div>
-<script src="js/malayalam.js"></script>
-<script src="js/typing.js"></script>
-<script>
-    var typing=Typing("Make sure your CapsLock is off when you type in Malayalam.", 5)
-    typing();
-
-</script>
-<script src="js/keyboards.js"></script>
-     <script src="js/webFrame.js"></script>
+    <!-- Load initialization script first -->
+    <script src="js/init.js"></script>
+    
+    <!-- Load jQuery -->
+    <script 
+        src="js/jquery-3.3.1.min.js" 
+        onload="handleScriptLoad('jquery')()" 
+        onerror="console.error('Failed to load jQuery')">
+    </script>
+    
+    <!-- Load core application scripts -->
+    <script 
+        src="js/typing.js" 
+        onload="handleScriptLoad('typing')()" 
+        onerror="console.error('Failed to load typing.js')">
+    </script>
+    <script 
+        src="js/malayalam.js" 
+        onload="handleScriptLoad('malayalam')()" 
+        onerror="console.error('Failed to load malayalam.js')">
+    </script>
+    
+    <!-- Load utility scripts -->
+    <script 
+        src="js/pastefrom.js" 
+        onload="handleScriptLoad('pastefrom')()" 
+        onerror="console.error('Failed to load pastefrom.js')">
+    </script>
+    <script 
+        src="js/capsLock.js" 
+        onload="handleScriptLoad('capsLock')()" 
+        onerror="console.error('Failed to load capsLock.js')">
+    </script>
+    <script 
+        src="js/emojiSession.js" 
+        onload="handleScriptLoad('emojiSession')()" 
+        onerror="console.error('Failed to load emojiSession.js')">
+    </script>
+    <script 
+        src="js/keyboards.js" 
+        onload="handleScriptLoad('keyboard')()" 
+        onerror="console.error('Failed to load keyboards.js')">
+    </script>
+    <script 
+        src="js/webFrame.js" 
+        onload="handleScriptLoad('webFrame')()" 
+        onerror="console.error('Failed to load webFrame.js')">
+    </script>
+    
+    <script>
+    // This space intentionally left blank - initialization code moved to init.js
+    </script>
     </body>
 
 </html>
