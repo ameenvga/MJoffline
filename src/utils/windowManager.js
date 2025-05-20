@@ -1,4 +1,4 @@
-const { BrowserWindow, screen, shell } = require('electron');
+const { BrowserWindow, screen, shell, dialog, app, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
 const logger = require('./logger');
@@ -150,58 +150,98 @@ class WindowManager {
     win.on('leave-full-screen', () => stateManager.set('window.isFullScreen', false));
 
     // Handle window close
-    win.on('close', (e) => {
-      // Prevent closing if there are unsaved changes
-      win.webContents.send('window-close-requested');
-      
-      // If there are unsaved changes, the renderer will respond with 'confirm-close'
-      const handleConfirmClose = (event, shouldClose) => {
-        if (shouldClose) {
+    win.on('close', async (e) => {
+      // Check for unsaved changes before closing
+      try {
+        const hasUnsavedChanges = await win.webContents.executeJavaScript('window.getHasUnsavedChanges?.() || false');
+        
+        if (hasUnsavedChanges) {
+          // Prevent the close for now
+          e.preventDefault();
+          
+          // Ask the user to confirm
+          const { response } = await dialog.showMessageBox(win, {
+            type: 'question',
+            buttons: ['Don\'t Save', 'Cancel', 'Save'],
+            defaultId: 2,
+            cancelId: 1,
+            message: 'Do you want to save the changes you made?',
+            detail: 'Your changes will be lost if you don\'t save them.'
+          });
+          
+          switch (response) {
+            case 0: // Don't Save
+              // Close without saving
+              this.cleanupWindow(win);
+              win.destroy();
+              break;
+              
+            case 1: // Cancel
+              // Do nothing, window will stay open
+              return;
+              
+            case 2: // Save
+              try {
+                // Request the renderer to save the document
+                const saveResult = await win.webContents.executeJavaScript('window.saveDocument?.()');
+                
+                if (saveResult && saveResult.success) {
+                  // If save was successful, close the window
+                  this.cleanupWindow(win);
+                  win.destroy();
+                } else {
+                  // If save was cancelled or failed, keep the window open
+                  return;
+                }
+              } catch (error) {
+                logger.error('Error during save:', error);
+                dialog.showErrorBox('Save Error', 'Failed to save the document.');
+                return;
+              }
+              break;
+          }
+        } else {
+          // No unsaved changes, just close
           saveState();
-          win.destroy();
-          this.windows.delete(win.id);
-          this.windowCount--;
-          
-          if (win === this.mainWindow) {
-            this.mainWindow = null;
-          }
-          
-          // Quit if all windows are closed (except on macOS)
-          if (this.windowCount === 0 && process.platform !== 'darwin') {
-            app.quit();
-          }
-        }
-      };
-      
-      // Listen for confirmation from renderer
-      ipcMain.once('confirm-close', handleConfirmClose);
-      
-      // Set a timeout in case the renderer doesn't respond
-      setTimeout(() => {
-        ipcMain.removeListener('confirm-close', handleConfirmClose);
-        if (!win.isDestroyed()) {
+          this.cleanupWindow(win);
           win.destroy();
         }
-      }, 1000);
-      
-      // Prevent default close behavior
-      e.preventDefault();
+      } catch (error) {
+        logger.error('Error during window close:', error);
+        // In case of error, allow the window to close
+        saveState();
+        this.cleanupWindow(win);
+        win.destroy();
+      }
     });
 
-    // Handle window closed
-    win.on('closed', () => {
-      // Clean up
-      if (win === this.mainWindow) {
-        this.mainWindow = null;
-      }
-      this.windows.delete(win.id);
-      this.windowCount--;
-      
-      // Quit if all windows are closed (except on macOS)
-      if (this.windowCount === 0 && process.platform !== 'darwin') {
-        app.quit();
-      }
-    });
+    // Set up closed handler
+    win.on('closed', () => this.handleWindowClosed(win));
+  }
+
+  /**
+   * Clean up window references
+   * @param {BrowserWindow} win - The window to clean up
+   */
+  cleanupWindow(win) {
+    if (win === this.mainWindow) {
+      this.mainWindow = null;
+    }
+    this.windows.delete(win.id);
+    this.windowCount--;
+    
+    // Quit if all windows are closed (except on macOS)
+    if (this.windowCount === 0 && process.platform !== 'darwin') {
+      app.quit();
+    }
+  }
+
+  /**
+   * Handle window closed event
+   * @param {BrowserWindow} win - The window that was closed
+   */
+  handleWindowClosed(win) {
+    this.cleanupWindow(win);
   }
 
   /**
@@ -215,82 +255,48 @@ class WindowManager {
         shell.openExternal(url);
         return { action: 'deny' };
       }
-      // Allow other URLs to open in the app
       return { action: 'allow' };
     });
   }
 
   /**
-   * Create a new editor window
+   * Create a new window
    * @param {Object} options - Window options
    * @returns {BrowserWindow} The created window
    */
-  createEditorWindow(options = {}) {
-    const defaults = {
-      width: 1000,
-      height: 700,
+  createWindow(options = {}) {
+    const win = new BrowserWindow({
+      width: 1024,
+      height: 768,
       show: false,
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true,
         sandbox: true,
-        preload: path.join(__dirname, '../../preload.js'),
-        additionalArguments: [
-          `--user-data-dir=${app.getPath('userData')}`,
-          `--app-version=${app.getVersion()}`
-        ]
+        webSecurity: true,
+        preload: path.join(__dirname, '../../preload.js')
       },
       ...options
-    };
-
-    const win = new BrowserWindow({
-      ...defaults,
-      webPreferences: {
-        ...defaults.webPreferences,
-        // Add any additional web preferences
-      }
     });
 
     // Track this window
     this.windows.set(win.id, win);
     this.windowCount++;
 
-    // Load the app
-    const startUrl = process.env.ELECTRON_START_URL || url.format({
-      pathname: path.join(__dirname, '../../build/index.html'),
-      protocol: 'file:',
-      slashes: true,
-      hash: options.hash || ''
-    });
-
-    win.loadURL(startUrl);
-
-    // Show window when ready
-    win.once('ready-to-show', () => {
-      win.show();
-      
-      // Open dev tools in development
-      if (process.env.NODE_ENV === 'development') {
-        win.webContents.openDevTools({ mode: 'detach' });
-      }
-    });
-
-    // Handle window events
+    // Set up window events
     this.setupWindowEvents(win);
-    
-    // Handle external links
     this.setupExternalLinks(win);
 
-    logger.info('Editor window created');
     return win;
   }
 
   /**
-   * Get the main window
-   * @returns {BrowserWindow|null} The main window
+   * Get a window by ID
+   * @param {number} id - Window ID
+   * @returns {BrowserWindow|undefined} The window or undefined if not found
    */
-  getMainWindow() {
-    return this.mainWindow;
+  getWindowById(id) {
+    return this.windows.get(id);
   }
 
   /**
@@ -302,71 +308,16 @@ class WindowManager {
   }
 
   /**
-   * Focus the main window or create it if it doesn't exist
+   * Focus a window
+   * @param {BrowserWindow} win - Window to focus
    */
-  focusMainWindow() {
-    if (this.mainWindow) {
-      if (this.mainWindow.isMinimized()) {
-        this.mainWindow.restore();
+  focusWindow(win) {
+    if (win && !win.isDestroyed()) {
+      if (win.isMinimized()) {
+        win.restore();
       }
-      this.mainWindow.focus();
-    } else {
-      this.createMainWindow();
+      win.focus();
     }
-  }
-
-  /**
-   * Create a new window with the given URL
-   * @param {string} url - The URL to load in the new window
-   * @param {Object} options - Window options
-   * @returns {BrowserWindow} The created window
-   */
-  createWindowWithUrl(url, options = {}) {
-    const win = new BrowserWindow({
-      width: 1000,
-      height: 700,
-      show: true,
-      webPreferences: {
-        nodeIntegration: false,
-        contextIsolation: true,
-        sandbox: true,
-        preload: path.join(__dirname, '../../preload.js')
-      },
-      ...options
-    });
-
-    // Track this window
-    this.windows.set(win.id, win);
-    this.windowCount++;
-
-    // Load the URL
-    win.loadURL(url);
-
-    // Handle window events
-    win.on('closed', () => {
-      this.windows.delete(win.id);
-      this.windowCount--;
-    });
-
-    // Handle external links
-    this.setupExternalLinks(win);
-
-    logger.info(`Window created with URL: ${url}`);
-    return win;
-  }
-
-  /**
-   * Close all windows
-   */
-  closeAllWindows() {
-    this.getAllWindows().forEach(win => {
-      if (!win.isDestroyed()) {
-        win.close();
-      }
-    });
-    this.windows.clear();
-    this.windowCount = 0;
-    this.mainWindow = null;
   }
 }
 
