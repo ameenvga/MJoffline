@@ -1734,7 +1734,7 @@ document.getElementById('aboutBoxLogo').ondragstart = function() { return false;
 document.getElementById('planegif').ondragstart = function() { return false; };
 document.getElementById('appIcon').ondragstart = function() { return false; };
 
-var userSelectedMlKeyBoard;
+var userSelectedMlKeyBoard = 'Phonetic';
 var userSelectedEnKeyBoard = 'QWERTY';
 var userSelectedArKeyBoard = 'Phonetic';
 function loadPreference(){

@@ -7,7 +7,8 @@ const loadedScripts = {
     typing: false,
     malayalam: false,
     keyboard: false,
-    webFrame: false
+    webFrame: false,
+    fixDropdown: false
 };
 
 // Check if all required scripts are loaded
