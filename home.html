@@ -1,89 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
 
-  <meta charset="utf-8">
-   
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link id="pageStyle" rel="stylesheet" href="css/medium.css">
-    <link rel="stylesheet" href="css/basicstyles.css">
-    <link rel="stylesheet" href="css/animation.css">
-    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+    <link id="pageStyle" rel="stylesheet" href="css/medium.css" />
+    <link rel="stylesheet" href="css/basicstyles.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/loading.css" />
     <title>Malayala Jaalakam</title>
 
-        <!-- Move scripts to the end of body to ensure DOM is loaded -->
+    <!-- Move scripts to the end of body to ensure DOM is loaded -->
     <script>
-        // Expose require to the window object for Electron
-        window.require = require;
+      // Expose require to the window object for Electron
+      window.require = require;
     </script>
-   
+
     <script>
-                capsLock.observe(function (status) {
-                var lastColor = bottom.style.color;
-                if(status){
-                    var typing=Typing("Make sure your CAPSLOCK is off when you type in malayalam", 5)
-                        typing();
-                }else{
-                }
-            });
-        </script> 
-    
+      capsLock.observe(function (status) {
+        var lastColor = bottom.style.color;
+        if (status) {
+          var typing = Typing('Make sure your CAPSLOCK is off when you type in malayalam', 5);
+          typing();
+        } else {
+        }
+      });
+    </script>
+
     <style>
-@font-face {
-    font-family: indulekha;
-    src: url(./fonts/indulekha.otf);
-}
-@font-face {
-    font-family: nihal;
-    src: url(./fonts/mlkvsakkeena.ttf);
-}
-@font-face {
-    font-family: notoSans;
-    src: url(./fonts/notosans.ttf);
-}
-@font-face {
-    font-family: notoArabic;
-    src: url(./fonts/notoArabic.ttf);
-}
-@font-face {
-    font-family: ubuntu;
-    src: url(./fonts/Ubuntu-R.ttf);
-}
-@font-face {
-    font-family: ubuntuCondensed;
-    src: url(./fonts/Ubuntu-C.ttf);
-}
-@font-face {
-    font-family: asap;
-    src: url(./fonts/notoEng.ttf);
-}
-@font-face {
-    font-family: symbola;
-    src: url(./fonts/Symbola.ttf);
-}
-@font-face {
-    font-family: notoEmoji;
-    src: url(./fonts/NotoColorEmoji.ttf);
-}
-
-        
-
+      @font-face {
+        font-family: indulekha;
+        src: url(./fonts/indulekha.otf);
+      }
+      @font-face {
+        font-family: nihal;
+        src: url(./fonts/mlkvsakkeena.ttf);
+      }
+      @font-face {
+        font-family: notoSans;
+        src: url(./fonts/notosans.ttf);
+      }
+      @font-face {
+        font-family: notoArabic;
+        src: url(./fonts/notoArabic.ttf);
+      }
+      @font-face {
+        font-family: ubuntu;
+        src: url(./fonts/Ubuntu-R.ttf);
+      }
+      @font-face {
+        font-family: ubuntuCondensed;
+        src: url(./fonts/Ubuntu-C.ttf);
+      }
+      @font-face {
+        font-family: asap;
+        src: url(./fonts/notoEng.ttf);
+      }
+      @font-face {
+        font-family: symbola;
+        src: url(./fonts/Symbola.ttf);
+      }
+      @font-face {
+        font-family: notoEmoji;
+        src: url(./fonts/NotoColorEmoji.ttf);
+      }
     </style>
-    
-    </head>
+  </head>
 
-<body>
+  <body>
     <!-- Loading Screen -->
-    <div id="loading-screen">
+    <!-- <div id="loading-screen">
         <div class="loading-spinner"></div>
         <div class="loading-text">Loading Malayala Jaalakam...</div>
-    </div>   
+    </div>    -->
 
-    <div id="appBanner" onclick="bannerHide(event)">
+    <!-- <div id="appBanner" onclick="bannerHide(event)">
         <div id="bannerImage" onclick="event.stopPropagation()">
             <div style="text-align: center; margin-bottom: 20px; font-size: 24px; font-weight: bold;">Welcome to Malayala Jaalakam</div>
             <div style="display: flex; flex-direction: column; gap: 15px;">
@@ -103,95 +97,115 @@
                 </div>
             </div>
         </div>
-    </div>
-            
-            <div class="fileDetailText">Recent documents</div>
+    </div> -->
+
+    <!-- <div class="fileDetailText">Recent documents</div>
             <div id="recentFileDiv">
 
             </div>
             </div>
-            </div>
-        
-   
-        </div>
+            </div> -->
+
+    <!-- </div> -->
     <div class="container" oncontextmenu="return showContextMenu(event);">
-			<div id="contextMenu" class="context-menu">
-				<ul>
-					<li onclick="cut_to_clipboard()"><i class="fa fa-scissors" aria-hidden="true"></i>
-                        <span class="contextmenutext">Cut</span>
-                    </li>
-					<li onclick="copy_to_clipboard()"><i class="fa fa-files-o" aria-hidden="true"></i>
-                        <span class="contextmenutext">Copy</span></li>
-					<li onclick="systemPasteListener()"><i class="fa fa-clipboard" aria-hidden="true"></i>
-<span class="contextmenutext">Paste</span></li>
-					<li class="separator"></li>
-                    <li onclick="makeItEnglish()"><span class="contextmenutext2">To English</span> </li>
-                    <li onclick="makeItIndent()"><i class="fa fa-indent" aria-hidden="true"></i><span class="contextmenutext">Indent</span> </li>
-                    <li onclick="makeItUnindent()"><i class="fa fa-dedent" aria-hidden="true"></i><span class="contextmenutext">Unindent</span> </li>
-                    
-                    <li onclick="addBullets()"><i class="fa fa-list-ul" aria-hidden="true"></i>
- <span class="contextmenutext">Add Bullets</span></li>
-                    
-                    <li onclick="addNumbering()"><i class="fa fa-list-ol" aria-hidden="true"></i>
-   <span class="contextmenutext">Add Numbers</span></li>
-                    
-                    <li onclick="addBulletsArabic()"><i class="fa fa-list-ul" aria-hidden="true"></i>
- <span class="contextmenutext">Add Bullets- Arabic</span></li>
-                    
-                    <li onclick="addNumberingArabic()"><i class="fa fa-list-ol" aria-hidden="true"></i>     
-   <span class="contextmenutext">Add Numbers- Arabic</span></li>
-                    
-                    <li class="separator"></li>
-					<li onclick="boldSelection()"><i class="fa fa-bold" aria-hidden="true"></i>
-<span class="contextmenutext">Bold</span></li>
-					<li onclick="italicizeSelection()"  ><i class="fa fa-italic" aria-hidden="true"></i>
-<span class="contextmenutext">Italic</span></li>
-					<li onclick="strikeSelection()"><i class="fa fa-strikethrough" aria-hidden="true"></i>
-<span class="contextmenutext">Strikethrough</span></li>
-					<li onclick="quoteSelection()" ><span class="contextmenutext2">Quote</span></li>
-					<li class="separator"></li>
-					<li onclick="addEmoji()"><span class="contextmenutext2">Add Emoji</span></li>
-                    <li onclick="cleanText()"><span class="contextmenutext2">Clean Text</span></li>
-				</ul>
-			</div>
-		</div>
-    <div id="emojiContainer">
-            <div id="emojiTitles">
-                <div id="people" onclick="getPeople()"></div>
-                <div id="nature" onclick="getNature()"></div>
-                <div id="food" onclick="getFood()"></div>
-                <div id="activity"onclick="getActivity()" ></div>
-                <div id="travel" onclick="getTravel()"  ></div>
-                <div id="object" onclick="getObject()" ></div>
-                <div id="symbol" onclick="getSymbol()" ></div>
-            </div>
-            <div id='emojiBoard'>
-            </div>
-            <div id="emojiButtonBar" onclick="emojiClose()">
-<!--                <i class="fa fa-close" aria-hidden="true">Close</i>-->
-                Close <b>x</b> 
-            </div>
-        </div> 
-    <div id="menuBox" class="context-menu">
+      <div id="contextMenu" class="context-menu">
         <ul>
-            <li onclick="recoverLastSession()">Recover Last Session</li>
-            <li onclick="findReplace()">Find and Replace</li>
-            <li onclick="printText()">Print</li>
-            <li class="separator"></li>
-            <li onclick="window.open('help.html');">Help </li>
-            <li onclick="showAboutBox()">About </li>
-            
+          <li onclick="cut_to_clipboard()">
+            <i class="fa fa-scissors" aria-hidden="true"></i>
+            <span class="contextmenutext">Cut</span>
+          </li>
+          <li onclick="copy_to_clipboard()">
+            <i class="fa fa-files-o" aria-hidden="true"></i>
+            <span class="contextmenutext">Copy</span>
+          </li>
+          <li onclick="systemPasteListener()">
+            <i class="fa fa-clipboard" aria-hidden="true"></i>
+            <span class="contextmenutext">Paste</span>
+          </li>
+          <li class="separator"></li>
+          <li onclick="makeItEnglish()"><span class="contextmenutext2">To English</span></li>
+          <li onclick="makeItIndent()">
+            <i class="fa fa-indent" aria-hidden="true"></i
+            ><span class="contextmenutext">Indent</span>
+          </li>
+          <li onclick="makeItUnindent()">
+            <i class="fa fa-dedent" aria-hidden="true"></i
+            ><span class="contextmenutext">Unindent</span>
+          </li>
+
+          <li onclick="addBullets()">
+            <i class="fa fa-list-ul" aria-hidden="true"></i>
+            <span class="contextmenutext">Add Bullets</span>
+          </li>
+
+          <li onclick="addNumbering()">
+            <i class="fa fa-list-ol" aria-hidden="true"></i>
+            <span class="contextmenutext">Add Numbers</span>
+          </li>
+
+          <li onclick="addBulletsArabic()">
+            <i class="fa fa-list-ul" aria-hidden="true"></i>
+            <span class="contextmenutext">Add Bullets- Arabic</span>
+          </li>
+
+          <li onclick="addNumberingArabic()">
+            <i class="fa fa-list-ol" aria-hidden="true"></i>
+            <span class="contextmenutext">Add Numbers- Arabic</span>
+          </li>
+
+          <li class="separator"></li>
+          <li onclick="boldSelection()">
+            <i class="fa fa-bold" aria-hidden="true"></i> <span class="contextmenutext">Bold</span>
+          </li>
+          <li onclick="italicizeSelection()">
+            <i class="fa fa-italic" aria-hidden="true"></i>
+            <span class="contextmenutext">Italic</span>
+          </li>
+          <li onclick="strikeSelection()">
+            <i class="fa fa-strikethrough" aria-hidden="true"></i>
+            <span class="contextmenutext">Strikethrough</span>
+          </li>
+          <li onclick="quoteSelection()"><span class="contextmenutext2">Quote</span></li>
+          <li class="separator"></li>
+          <li onclick="addEmoji()"><span class="contextmenutext2">Add Emoji</span></li>
+          <li onclick="cleanText()"><span class="contextmenutext2">Clean Text</span></li>
         </ul>
+      </div>
+    </div>
+    <div id="emojiContainer">
+      <div id="emojiTitles">
+        <div id="people" onclick="getPeople()"></div>
+        <div id="nature" onclick="getNature()"></div>
+        <div id="food" onclick="getFood()"></div>
+        <div id="activity" onclick="getActivity()"></div>
+        <div id="travel" onclick="getTravel()"></div>
+        <div id="object" onclick="getObject()"></div>
+        <div id="symbol" onclick="getSymbol()"></div>
+      </div>
+      <div id="emojiBoard"></div>
+      <div id="emojiButtonBar" onclick="emojiClose()">
+        <!--                <i class="fa fa-close" aria-hidden="true">Close</i>-->
+        Close <b>x</b>
+      </div>
+    </div>
+    <div id="menuBox" class="context-menu">
+      <ul>
+        <li onclick="recoverLastSession()">Recover Last Session</li>
+        <li onclick="findReplace()">Find and Replace</li>
+        <li onclick="printText()">Print</li>
+        <li class="separator"></li>
+        <li onclick="window.open('help.html');">Help</li>
+        <li onclick="showAboutBox()">About</li>
+      </ul>
     </div>
     <div id="pasteFromMenuBox" class="context-menu">
-        <ul>
-            <li onclick="pasteFromFMLText()">Paste From FML</li>
-            <li onclick="pasteFromMLKVText()">Paste From ML-KV</li>         
-            <li onclick="pasteFromML()">Paste From ML</li>         
-
-        </ul>
+      <ul>
+        <li onclick="pasteFromFMLText()">Paste From FML</li>
+        <li onclick="pasteFromMLKVText()">Paste From ML-KV</li>
+        <li onclick="pasteFromML()">Paste From ML</li>
+      </ul>
     </div>
-<!--
+    <!--
     <div id="saveAsMenuBox" class="context-menu">
         <ul>
             <li onclick="saveChange()">Save As Text File</li>
@@ -200,279 +214,465 @@
     </div>
 -->
     <div id="convertBoxMenu" class="context-menu">
-            <ul>
-            <li id ="convertFMLButton" onclick="convertToFML()" >Convert to FML</li>
-            <li onclick="convertToMLKV()" id ="convertMLKVButton">Convert to ML-KV</li>
-                <li class="separator"></li>
-            <li class ="convertFMLButton" onclick="copyToFML()" >Copy to FML <span>Ctrl+F</span></li>
-            <li class ="convertFMLButton" onclick="copyToMLKV()" >Copy to ML-KV <span>Ctrl+M</span></li>
-            </ul>
-        </div>
+      <ul>
+        <li id="convertFMLButton" onclick="convertToFML()">Convert to FML</li>
+        <li onclick="convertToMLKV()" id="convertMLKVButton">Convert to ML-KV</li>
+        <li class="separator"></li>
+        <li class="convertFMLButton" onclick="copyToFML()">Copy to FML <span>Ctrl+F</span></li>
+        <li class="convertFMLButton" onclick="copyToMLKV()">Copy to ML-KV <span>Ctrl+M</span></li>
+      </ul>
+    </div>
     <div id="MlKeyboardBoxMenu" class="context-menu">
-        <ul>
-            <li id ="phoneticButton" onclick="showMlPhoneticKeyboard()" >Phonetic</li>
-            <li id ="inscriptButton" onclick="showMlInscriptKeboard()" >Inscript</li>
-            <li id ="fmlButton" onclick="showMlASCKeyboard()" >ASCII</li>
-
-            </ul>
-        </div>
+      <ul>
+        <li id="phoneticButton" onclick="showMlPhoneticKeyboard()">Phonetic</li>
+        <li id="inscriptButton" onclick="showMlInscriptKeboard()">Inscript</li>
+        <li id="fmlButton" onclick="showMlASCKeyboard()">ASCII</li>
+      </ul>
+    </div>
     <div id="EnKeyboardBoxMenu" class="context-menu">
-        <ul>
-            <li id ="EnNormalKeyboard" onclick="showMlPhoneticKeyboard()" >QWERTY</li>
-
-            </ul>
-        </div>
+      <ul>
+        <li id="EnNormalKeyboard" onclick="showMlPhoneticKeyboard()">QWERTY</li>
+      </ul>
+    </div>
     <div id="ArKeyboardBoxMenu" class="context-menu">
-        <ul>
-            <li id ="ArPhoneticKeyboard" onclick="showArPhoneticKeyboard()" >Phonetic</li>
-            <li id ="ArPhoneticKeyboard" onclick="showAr101Keyboard()" >101 Keyboard</li>
-            </ul>
-        </div>
-    <div id="findReplaceBox" >
-        <div id="findBoxHeader">Find and Replace</div>
-        
-        <div id="findBoxMain">
+      <ul>
+        <li id="ArPhoneticKeyboard" onclick="showArPhoneticKeyboard()">Phonetic</li>
+        <li id="ArPhoneticKeyboard" onclick="showAr101Keyboard()">101 Keyboard</li>
+      </ul>
+    </div>
+    <div id="findReplaceBox">
+      <div id="findBoxHeader">Find and Replace</div>
+
+      <div id="findBoxMain">
         <div id="findBoxBody">
-            
-            <div>
-            <div class="findBoxElements findBoxlblbtns">Find </div>
+          <div>
+            <div class="findBoxElements findBoxlblbtns">Find</div>
             <input id="searchWord" class="typingField findBoxElements tabGuy" />
             <button onclick="findWord()" class="findBoxElements findBoxlblbtns findBoxBtn tabGuy">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                Find</button></div>
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Find
+            </button>
+          </div>
 
-            <div>
-            <div class="findBoxElements findBoxlblbtns" >Replace with </div>
+          <div>
+            <div class="findBoxElements findBoxlblbtns">Replace with</div>
             <input id="replaceWord" class="typingField findBoxElements tabGuy" />
-            <button onclick="replaceAllWords()" class="findBoxElements findBoxlblbtns findBoxBtn tabGuy">
-                <i class="fa fa-bolt" aria-hidden="true"></i>
-                Replace All</button></div>
+            <button
+              onclick="replaceAllWords()"
+              class="findBoxElements findBoxlblbtns findBoxBtn tabGuy"
+            >
+              <i class="fa fa-bolt" aria-hidden="true"></i>
+              Replace All
+            </button>
+          </div>
 
-    
-            <div id="findReplaceStatus">Please enter your search word</div>
-            </div>
-        <div id="findBoxRightSide">   
-            
-            </div>
+          <div id="findReplaceStatus">Please enter your search word</div>
         </div>
-        <div id="findReplaceBottom" class="pop-flex-container" >
-
-            <button onclick="closeFindReplaceBox()" class="mjButton tabGuy">
-                <i class="fa fa-check" aria-hidden="true"></i>
-                Done</button>
-        </div>
+        <div id="findBoxRightSide"></div>
+      </div>
+      <div id="findReplaceBottom" class="pop-flex-container">
+        <button onclick="closeFindReplaceBox()" class="mjButton tabGuy">
+          <i class="fa fa-check" aria-hidden="true"></i>
+          Done
+        </button>
+      </div>
     </div>
-    <div id="dialogOverlay">  </div>
+    <div id="dialogOverlay"></div>
     <div id="dialogBox">
-        <div class="pop-flex-vertical">
-            <div id="dialogBoxHead"></div>
-                <p style="overflow-y: scroll" contenteditable="true" id="dialogBoxBody" class="tabGuy">Body</p>
-                <div id="dialogBoxBottom" class="pop-flex-container">
-            </div>
-            </div>
-            </div>
+      <div class="pop-flex-vertical">
+        <div id="dialogBoxHead"></div>
+        <p style="overflow-y: scroll" contenteditable="true" id="dialogBoxBody" class="tabGuy">
+          Body
+        </p>
+        <div id="dialogBoxBottom" class="pop-flex-container"></div>
+      </div>
+    </div>
     <div id="confirmBox">
-        <div class="pop-flex-vertical">
-            <div id="confirmBoxHead">Are you sure?</div>
-            <p id="confirmBoxBody">UnsavedChagnes will be lost</p>
-            <div id="confirmBoxBottom" class="pop-flex-container">
-            </div>
-        </div>
-        </div>
+      <div class="pop-flex-vertical">
+        <div id="confirmBoxHead">Are you sure?</div>
+        <p id="confirmBoxBody">UnsavedChagnes will be lost</p>
+        <div id="confirmBoxBottom" class="pop-flex-container"></div>
+      </div>
+    </div>
     <div id="alignBoxMenu" class="context-menu">
-        <ul>
-            <li id ="alignLeftMedBtn" onclick="alignText('left')"  >Align Left</li>
-            <li id ="alignRightMedBtn" onclick="alignText('right')"  >Align Right</li>
-            <li id ="alignCenterMedBtn" onclick="alignText('center')"  >Align Center</li>
-            <li id ="alignjustifyMedBtn" onclick="alignText('justify')"  > Justify</li>
-
-        </ul>
+      <ul>
+        <li id="alignLeftMedBtn" onclick="alignText('left')">Align Left</li>
+        <li id="alignRightMedBtn" onclick="alignText('right')">Align Right</li>
+        <li id="alignCenterMedBtn" onclick="alignText('center')">Align Center</li>
+        <li id="alignjustifyMedBtn" onclick="alignText('justify')">Justify</li>
+      </ul>
     </div>
     <div id="langBoxMenu" class="context-menu">
-        <ul>
-            <li onclick="makeActiveLanguage('langEnBtn')" >English</li>
-            <li onclick="makeActiveLanguage('langMlBtn')" >Malayalam</li>
-            <li onclick="makeActiveLanguage('langArBtn')" >Arabic</li>
-
-        </ul>
+      <ul>
+        <li onclick="makeActiveLanguage('langEnBtn')">English</li>
+        <li onclick="makeActiveLanguage('langMlBtn')">Malayalam</li>
+        <li onclick="makeActiveLanguage('langArBtn')">Arabic</li>
+      </ul>
     </div>
-    <div id="searchBoxMenu" class="closeSearch" >
-        <div id="searchHouse">
+    <div id="searchBoxMenu" class="closeSearch">
+      <div id="searchHouse">
         <input id="TopSearchBox" class="typingField tabGuy" />
-        <button onclick="findNextMatch()" id="TopSearchNextBtn" class="findBoxElements findBoxlblbtns findBoxBtn tabGuy"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Next</button>
-        <button onclick="findPreMatch()" id="TopSearchPreBtn" class='findBoxElements findBoxlblbtns findBoxBtn tabGuy' ><i class="fa fa-angle-double-left" aria-hidden="true"></i>Previous</button>
-       <button onclick="closeSearchBarBox()" id="TopSearchCloseBtn" class='findBoxElements findBoxlblbtns findBoxBtn tabGuy' ><i class="fa fa-close" aria-hidden="true"></i>Close</button></div>
-        <div id="searchDetail">Details will be displayed here!</div>
+        <button
+          onclick="findNextMatch()"
+          id="TopSearchNextBtn"
+          class="findBoxElements findBoxlblbtns findBoxBtn tabGuy"
+        >
+          <i class="fa fa-angle-double-right" aria-hidden="true"></i>Next
+        </button>
+        <button
+          onclick="findPreMatch()"
+          id="TopSearchPreBtn"
+          class="findBoxElements findBoxlblbtns findBoxBtn tabGuy"
+        >
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>Previous
+        </button>
+        <button
+          onclick="closeSearchBarBox()"
+          id="TopSearchCloseBtn"
+          class="findBoxElements findBoxlblbtns findBoxBtn tabGuy"
+        >
+          <i class="fa fa-close" aria-hidden="true"></i>Close
+        </button>
+      </div>
+      <div id="searchDetail">Details will be displayed here!</div>
     </div>
     <div id="aboutBox" onclick="closeAboutBox()">
-        <div>
-            <img onclick="closeAboutBox()" id="aboutBoxLogo" src="assets/icons/Logo.svg"/>
-      
-            <div style="font-size: 13px; text-align: justify;
-        padding: 41px;">Malayala Jaalakam is an open source, Unicode Malayalam language editor in which you can type, edit and manipulate documents in the Malayalam language. English and Arabic languages are also supported. For the purpose of displaying text, the fonts Noto Sans English, Noto Sans Malayalam, FML-Indulekha, Ubuntu and ML-KV Sakkeena - have been used in this program. This program is developed by Ameen Vengara. Please feel free to contact him for suggestions and feedback. <i>ameenvengara@gmail.com</i> </div>
-            </div>
+      <div>
+        <img onclick="closeAboutBox()" id="aboutBoxLogo" src="assets/icons/Logo.svg" />
+
+        <div style="font-size: 13px; text-align: justify; padding: 41px">
+          Malayala Jaalakam is an open source, Unicode Malayalam language editor in which you can
+          type, edit and manipulate documents in the Malayalam language. English and Arabic
+          languages are also supported. For the purpose of displaying text, the fonts Noto Sans
+          English, Noto Sans Malayalam, FML-Indulekha, Ubuntu and ML-KV Sakkeena - have been used in
+          this program. This program is developed by Ameen Vengara. Please feel free to contact him
+          for suggestions and feedback. <i>ameenvengara@gmail.com</i>
+        </div>
+      </div>
     </div>
-    <div id="InsKeyBoardBox">
-    
-    </div>
+    <div id="InsKeyBoardBox"></div>
 
     <div id="planeAnimBox">
-        <img id="planegif" src="assets/plane.gif" style="width: 150px; height: 150px; user-select: none" >
-        <div id="planeBanner">
-            <div id="bannerTitle">CONGRATULATIONS!</div>
-            <div id="bannerDesc"></div>
-        </div>
-        </div>
+      <img
+        id="planegif"
+        src="assets/plane.gif"
+        style="width: 150px; height: 150px; user-select: none"
+      />
+      <div id="planeBanner">
+        <div id="bannerTitle">CONGRATULATIONS!</div>
+        <div id="bannerDesc"></div>
+      </div>
+    </div>
     <div id="webFrame">
-        <textarea class="typingField" id="duaarabic"placeholder="dua-arabic" ></textarea>
-        <textarea class="typingField" id="duamalayalam" placeholder="dua-malayalam" ></textarea>
-        <textarea class="typingField" id="duaenglish" placeholder="dua-english" ></textarea>
-        <textarea class="typingField" id="duadetails" placeholder="dua-details" ></textarea>
-        <div id="buttonWebFrame">
+      <textarea class="typingField" id="duaarabic" placeholder="dua-arabic"></textarea>
+      <textarea class="typingField" id="duamalayalam" placeholder="dua-malayalam"></textarea>
+      <textarea class="typingField" id="duaenglish" placeholder="dua-english"></textarea>
+      <textarea class="typingField" id="duadetails" placeholder="dua-details"></textarea>
+      <div id="buttonWebFrame">
         <button onclick="closeWebFrame()">Close</button>
         <button onclick="copyWebframeHtml()">Copy Html</button>
         <button onclick="pasteHtmlToWebFrame()">Paste Html</button>
         <button onclick="resetWebFrame()">Reset</button>
-        </div>
+      </div>
     </div>
-<div id="wrapper">
-    <img alt="Malayala Jaalakam v 2.0.0" id="appIcon" src="assets/icons/appIcon.png" onclick="toggleBanner()" style="cursor: pointer;"/>
-    
-    
-        <div id="title-mini-bar">
-    <i class="fa fa-folder-open-o" onclick="openFile()" aria-hidden="true" ></i>
-    <i id="clearButton" class="fa fa-file-o" aria-hidden="true"></i>
-    <i title="Save file" class="fa fa-floppy-o" onclick="saveChange()" aria-hidden="true"></i>
-    <i title="Decrease font size Ctrl -" class="fa fa-minus" onclick="decreaseFontSize()"  aria-hidden="true"></i>
-    <i title="Increase font size Ctrl +" class="fa fa-plus" onclick="increaseFontSize()"  aria-hidden="true"></i>
-    <i title="Copy selected or the whole text to clipboard Ctrl + C" class="fa fa-files-o" onclick="copy_to_clipboard()"  aria-hidden="true"></i>
-    <i title="Undo- One step backward" class="fa fa-undo" onclick="undoAction()" aria-hidden="true"></i>
-    <i title="Redoo- One step forward" class="fa fa-repeat" onclick="redoAction()" aria-hidden="true"></i>
-    
-    
-        </div>
-        <div id="title-medium-bar">
-            <i id="keyboardMedIcon" title="Change Keyboard" class="fa fa-pencil" aria-hidden="true"></i>
-            <div title="Select language " id="langMedButton" class="langBtnCommon langBtn">ML</div>
-            <i id="alignMedButton" title="Text alignment" class="fa fa-align-left"  aria-hidden="true"></i>
-            <i title="Decrease font size Ctrl -" class="fa fa-minus" onclick="decreaseFontSize()"  aria-hidden="true"></i>
-            <i title="Increase font size Ctrl +" class="fa fa-plus" onclick="increaseFontSize()"  aria-hidden="true"></i>
-            <i title="Copy selected or the whole text to clipboard Ctrl + C" class="fa fa-files-o" onclick="copy_to_clipboard()"  aria-hidden="true"></i>
-            <i title="Undo- One step backward" class="fa fa-undo" onclick="undoAction()" aria-hidden="true"></i>
-            <i title="Redoo- One step forward" class="fa fa-repeat" onclick="redoAction()" aria-hidden="true"></i>
-            <i id="convertMedBtn" title="Convert to another font format" class="fa fa-mail-forward" aria-hidden="true"></i>
-            <i  title="Search" id="searchButton" class="fa fa-search" aria-hidden="true"></i>
-            <i id="moreMedBtn" title="More options" class="fa fa-navicon" aria-hidden="true"></i>
-             <i onclick="changeTheme()" title="Change theme"  class="fa fa-paint-brush" aria-hidden="true"></i>
-        </div>
-        <div id="title-bar">
-            <div id="topBarOptions">
-                <div id="keyboardSelect" title="Switch keyboard">Keyboard: Phonetic <i  class="fa fa-angle-down" id="keyboardArrow" aria-hidden="true"></i></div>
-                <collection>
-                    <div title="For English F1" onclick="makeActiveLanguage('langEnBtn')" id="langEnBtn" class="langBtnCommon langBtn">EN</div>
-                    <div title="For Malayalam F2"  onclick="makeActiveLanguage('langMlBtn')" id="langMlBtn" class="langBtnCommon activeLangBtn">ML</div>
-                    <div title="For Arabic F3"  onclick="makeActiveLanguage('langArBtn')" id="langArBtn" class="langBtnCommon langBtn">AR</div>
-                </collection>
-                <collection title="Text alignment" class="topBarIcons" id="topBarAlignIcons">
-                    <i class="fa fa-align-left" onclick="alignText('left')" aria-hidden="true"></i>
-                    <i class="fa fa-align-right" onclick="alignText('right')" aria-hidden="true"></i>
-                    <i class="fa fa-align-center" onclick="alignText('center')" aria-hidden="true"></i>
-                    <i class="fa fa-align-justify" onclick="alignText('justify')" aria-hidden="true"></i>
-                </collection>
+    <div id="wrapper">
+      <img
+        alt="Malayala Jaalakam v 2.0.0"
+        id="appIcon"
+        src="assets/icons/appIcon.png"
+        onclick="toggleBanner()"
+        style="cursor: pointer"
+      />
 
-                <Collection class="topBarIcons" id="topBarIconButtons">
-                    <i title="Decrease font size Ctrl -" class="fa fa-minus" onclick="decreaseFontSize()"  aria-hidden="true"></i>
-                    <i title="Increase font size Ctrl +" class="fa fa-plus" onclick="increaseFontSize()"  aria-hidden="true"></i>
-                    <i title="Copy selected or the whole text to clipboard Ctrl + C" class="fa fa-files-o" onclick="copy_to_clipboard()"  aria-hidden="true"></i>
-                    <i title="Undo- One step backward" class="fa fa-undo" onclick="undoAction()" aria-hidden="true"></i>
-                    <i title="Redoo- One step forward" class="fa fa-repeat" onclick="redoAction()" aria-hidden="true"></i>
-                    </Collection>
-
-                <div title="Convert to other font formats" id ="convertButton" > Convert to...<i id="convertArrow" class="fa fa-angle-down" aria-hidden="true"></i></div>
-                <div title="More options" id ="menuButton" > Options...<i id="optionArrow" class="fa fa-angle-down" aria-hidden="true"></i></div>
-
-                <subDiv id="searchBar" class="topBarIcons" >
-                     <i  title="Search" id="searchButton" class="fa fa-search" aria-hidden="true"></i>
-                     <i onclick="changeTheme()" title="Change theme"  class="fa fa-paint-brush" aria-hidden="true"></i>
-                </subDiv>
+      <div id="title-mini-bar">
+        <i class="fa fa-folder-open-o" onclick="openFile()" aria-hidden="true"></i>
+        <i id="clearButton" class="fa fa-file-o" aria-hidden="true"></i>
+        <i title="Save file" class="fa fa-floppy-o" onclick="saveChange()" aria-hidden="true"></i>
+        <i
+          title="Decrease font size Ctrl -"
+          class="fa fa-minus"
+          onclick="decreaseFontSize()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Increase font size Ctrl +"
+          class="fa fa-plus"
+          onclick="increaseFontSize()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Copy selected or the whole text to clipboard Ctrl + C"
+          class="fa fa-files-o"
+          onclick="copy_to_clipboard()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Undo- One step backward"
+          class="fa fa-undo"
+          onclick="undoAction()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Redoo- One step forward"
+          class="fa fa-repeat"
+          onclick="redoAction()"
+          aria-hidden="true"
+        ></i>
+      </div>
+      <div id="title-medium-bar">
+        <i id="keyboardMedIcon" title="Change Keyboard" class="fa fa-pencil" aria-hidden="true"></i>
+        <div title="Select language " id="langMedButton" class="langBtnCommon langBtn">ML</div>
+        <i
+          id="alignMedButton"
+          title="Text alignment"
+          class="fa fa-align-left"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Decrease font size Ctrl -"
+          class="fa fa-minus"
+          onclick="decreaseFontSize()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Increase font size Ctrl +"
+          class="fa fa-plus"
+          onclick="increaseFontSize()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Copy selected or the whole text to clipboard Ctrl + C"
+          class="fa fa-files-o"
+          onclick="copy_to_clipboard()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Undo- One step backward"
+          class="fa fa-undo"
+          onclick="undoAction()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Redoo- One step forward"
+          class="fa fa-repeat"
+          onclick="redoAction()"
+          aria-hidden="true"
+        ></i>
+        <i
+          id="convertMedBtn"
+          title="Convert to another font format"
+          class="fa fa-mail-forward"
+          aria-hidden="true"
+        ></i>
+        <i title="Search" id="searchButton" class="fa fa-search" aria-hidden="true"></i>
+        <i id="moreMedBtn" title="More options" class="fa fa-navicon" aria-hidden="true"></i>
+        <i
+          onclick="changeTheme()"
+          title="Change theme"
+          class="fa fa-paint-brush"
+          aria-hidden="true"
+        ></i>
+      </div>
+      <div id="title-bar">
+        <div id="topBarOptions">
+          <div id="keyboardSelect" title="Switch keyboard">
+            Keyboard: Phonetic
+            <i class="fa fa-angle-down" id="keyboardArrow" aria-hidden="true"></i>
+          </div>
+          <collection>
+            <div
+              title="For English F1"
+              onclick="makeActiveLanguage('langEnBtn')"
+              id="langEnBtn"
+              class="langBtnCommon langBtn"
+            >
+              EN
             </div>
+            <div
+              title="For Malayalam F2"
+              onclick="makeActiveLanguage('langMlBtn')"
+              id="langMlBtn"
+              class="langBtnCommon activeLangBtn"
+            >
+              ML
             </div>
+            <div
+              title="For Arabic F3"
+              onclick="makeActiveLanguage('langArBtn')"
+              id="langArBtn"
+              class="langBtnCommon langBtn"
+            >
+              AR
+            </div>
+          </collection>
+          <collection title="Text alignment" class="topBarIcons" id="topBarAlignIcons">
+            <i class="fa fa-align-left" onclick="alignText('left')" aria-hidden="true"></i>
+            <i class="fa fa-align-right" onclick="alignText('right')" aria-hidden="true"></i>
+            <i class="fa fa-align-center" onclick="alignText('center')" aria-hidden="true"></i>
+            <i class="fa fa-align-justify" onclick="alignText('justify')" aria-hidden="true"></i>
+          </collection>
 
-        <div id="sideBar" class="topBarIcons">
+          <Collection class="topBarIcons" id="topBarIconButtons">
+            <i
+              title="Decrease font size Ctrl -"
+              class="fa fa-minus"
+              onclick="decreaseFontSize()"
+              aria-hidden="true"
+            ></i>
+            <i
+              title="Increase font size Ctrl +"
+              class="fa fa-plus"
+              onclick="increaseFontSize()"
+              aria-hidden="true"
+            ></i>
+            <i
+              title="Copy selected or the whole text to clipboard Ctrl + C"
+              class="fa fa-files-o"
+              onclick="copy_to_clipboard()"
+              aria-hidden="true"
+            ></i>
+            <i
+              title="Undo- One step backward"
+              class="fa fa-undo"
+              onclick="undoAction()"
+              aria-hidden="true"
+            ></i>
+            <i
+              title="Redoo- One step forward"
+              class="fa fa-repeat"
+              onclick="redoAction()"
+              aria-hidden="true"
+            ></i>
+          </Collection>
+
+          <div title="Convert to other font formats" id="convertButton">
+            Convert to...<i id="convertArrow" class="fa fa-angle-down" aria-hidden="true"></i>
+          </div>
+          <div title="More options" id="menuButton">
+            Options...<i id="optionArrow" class="fa fa-angle-down" aria-hidden="true"></i>
+          </div>
+
+          <subDiv id="searchBar" class="topBarIcons">
+            <i title="Search" id="searchButton" class="fa fa-search" aria-hidden="true"></i>
+            <i
+              onclick="changeTheme()"
+              title="Change theme"
+              class="fa fa-paint-brush"
+              aria-hidden="true"
+            ></i>
+          </subDiv>
+        </div>
+      </div>
+
+      <div id="sideBar" class="topBarIcons">
         <i title="New file Ctrl+N" id="clearButton" class="fa fa-file-o" aria-hidden="true"></i>
-        <i title="Open file Ctrl+O" class="fa fa-folder-open-o" onclick="openFile()" aria-hidden="true" ></i>
-        <i title="Save file Ctrl+S" onclick="saveChange('btnClick')" class="fa fa-floppy-o" id="saveAsBtn" aria-hidden="true"></i>
-        <i id="pasteFromBtn" title="Paste from other font format" class="fa fa-download" aria-hidden="true"></i>
-        <i title="Compact view" id="compactButton" class="fa fa-expand" onclick="compactView()" aria-hidden="true"></i>
-        <i title="Show KeyBoard" id="showKeyboardButton" class="fa fa-keyboard-o" onclick="showKeyBoardView()" aria-hidden="true"></i>
-    </div>
-        <div id='middleBar'>
-            <div id="fakeTextArea">
-            <div id="backdrop"></div>
-            <textarea  id="ta" onkeyup="getLineNumber(this)" onmouseup="this.onkeyup()" oncontextmenu="return showContextMenu(event);" tabindex="-1" ></textarea>
-            </div>
-            </div>
-        <div id="bottom" ><span id="text"></span>
-            <div id="title">Untitled file</div>
-            <div id="bottomInformations">
-                <div>font size: <span id="fontSizeIndicator">0</span></div>
-                <div>current Sentence : <span id="indicator">0</span></div>
-                <div>word Count : <span id="wordCount">0</span></div>
-            </div>
-            </div>
+        <i
+          title="Open file Ctrl+O"
+          class="fa fa-folder-open-o"
+          onclick="openFile()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Save file Ctrl+S"
+          onclick="saveChange('btnClick')"
+          class="fa fa-floppy-o"
+          id="saveAsBtn"
+          aria-hidden="true"
+        ></i>
+        <i
+          id="pasteFromBtn"
+          title="Paste from other font format"
+          class="fa fa-download"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Compact view"
+          id="compactButton"
+          class="fa fa-expand"
+          onclick="compactView()"
+          aria-hidden="true"
+        ></i>
+        <i
+          title="Show KeyBoard"
+          id="showKeyboardButton"
+          class="fa fa-keyboard-o"
+          onclick="showKeyBoardView()"
+          aria-hidden="true"
+        ></i>
+      </div>
+      <div id="middleBar">
+        <div id="fakeTextArea">
+          <div id="backdrop"></div>
+          <textarea
+            id="ta"
+            onkeyup="getLineNumber(this)"
+            onmouseup="this.onkeyup()"
+            oncontextmenu="return showContextMenu(event);"
+            tabindex="-1"
+          ></textarea>
         </div>
+      </div>
+      <div id="bottom">
+        <span id="text"></span>
+        <div id="title">Untitled file</div>
+        <div id="bottomInformations">
+          <div>font size: <span id="fontSizeIndicator">0</span></div>
+          <div>current Sentence : <span id="indicator">0</span></div>
+          <div>word Count : <span id="wordCount">0</span></div>
+        </div>
+      </div>
+    </div>
     <!-- Load initialization script first -->
     <script src="js/init.js"></script>
-    
-    <!-- Load jQuery -->
-    <script 
-        src="js/jquery-3.3.1.min.js" 
-        onload="handleScriptLoad('jquery')()" 
-        onerror="console.error('Failed to load jQuery')">
-    </script>
-    
-    <!-- Load core application scripts -->
-    <script 
-        src="js/typing.js" 
-        onload="handleScriptLoad('typing')()" 
-        onerror="console.error('Failed to load typing.js')">
-    </script>
-    <script 
-        src="js/malayalam.js" 
-        onload="handleScriptLoad('malayalam')()" 
-        onerror="console.error('Failed to load malayalam.js')">
-    </script>
-    
-    <!-- Load utility scripts -->
-    <script 
-        src="js/pastefrom.js" 
-        onload="handleScriptLoad('pastefrom')()" 
-        onerror="console.error('Failed to load pastefrom.js')">
-    </script>
-    <script 
-        src="js/capsLock.js" 
-        onload="handleScriptLoad('capsLock')()" 
-        onerror="console.error('Failed to load capsLock.js')">
-    </script>
-    <script 
-        src="js/emojiSession.js" 
-        onload="handleScriptLoad('emojiSession')()" 
-        onerror="console.error('Failed to load emojiSession.js')">
-    </script>
-    <script 
-        src="js/keyboards.js" 
-        onload="handleScriptLoad('keyboard')()" 
-        onerror="console.error('Failed to load keyboards.js')">
-    </script>
-    <script 
-        src="js/webFrame.js" 
-        onload="handleScriptLoad('webFrame')()" 
-        onerror="console.error('Failed to load webFrame.js')">
-    </script>
-    
-    <script>
-    // This space intentionally left blank - initialization code moved to init.js
-    </script>
-    </body>
 
+    <!-- Load jQuery -->
+    <script
+      src="js/jquery-3.3.1.min.js"
+      onload="handleScriptLoad('jquery')()"
+      onerror="console.error('Failed to load jQuery')"
+    ></script>
+
+    <!-- Load core application scripts -->
+    <script
+      src="js/typing.js"
+      onload="handleScriptLoad('typing')()"
+      onerror="console.error('Failed to load typing.js')"
+    ></script>
+    <script
+      src="js/malayalam.js"
+      onload="handleScriptLoad('malayalam')()"
+      onerror="console.error('Failed to load malayalam.js')"
+    ></script>
+
+    <!-- Load utility scripts -->
+    <script
+      src="js/pastefrom.js"
+      onload="handleScriptLoad('pastefrom')()"
+      onerror="console.error('Failed to load pastefrom.js')"
+    ></script>
+    <script
+      src="js/capsLock.js"
+      onload="handleScriptLoad('capsLock')()"
+      onerror="console.error('Failed to load capsLock.js')"
+    ></script>
+    <script
+      src="js/emojiSession.js"
+      onload="handleScriptLoad('emojiSession')()"
+      onerror="console.error('Failed to load emojiSession.js')"
+    ></script>
+    <script
+      src="js/keyboards.js"
+      onload="handleScriptLoad('keyboard')()"
+      onerror="console.error('Failed to load keyboards.js')"
+    ></script>
+    <script
+      src="js/webFrame.js"
+      onload="handleScriptLoad('webFrame')()"
+      onerror="console.error('Failed to load webFrame.js')"
+    ></script>
+
+    <script>
+      // This space intentionally left blank - initialization code moved to init.js
+    </script>
+  </body>
 </html>
